@@ -9,10 +9,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-<<<<<<< HEAD
-=======
+
 use app\models\User;
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
+
 
 class SiteController extends Controller
 {
@@ -84,17 +83,12 @@ class SiteController extends Controller
             return $this->goBack();
         }
 
-<<<<<<< HEAD
-        $model->password = '';
-=======
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
         return $this->render('login', [
             'model' => $model,
         ]);
     }
 
-<<<<<<< HEAD
-=======
+
     public function actionRegister(){
         if(!Yii::$app->user->isGuest){
             return $this->goHome();
@@ -109,7 +103,7 @@ class SiteController extends Controller
         ]);
     }
 
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
+
     /**
      * Logout action.
      *
