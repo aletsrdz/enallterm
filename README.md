@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
@@ -231,3 +235,9 @@ vendor/bin/codecept run functional,unit -- --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
+<<<<<<< HEAD
+=======
+=======
+# enallterm
+>>>>>>> 7f06a93477689f44cf7e73b24439f66e266f4a8a
+>>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
