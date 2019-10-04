@@ -10,7 +10,7 @@ CREATE TABLE "user"(
 	password varchar(256) NOT NULL,
 	contact_email integer, --quitar no los tengo contemplados en el diseño de la bd para el sistema 
 	contact_phone integer, --quitar
-	status integer DEFAULT = 0,
+	status integer DEFAULT 0,
 	created_at TIMESTAMP NOT NULL DEFAULT now(),
 	update_at TIMESTAMP,
 	CONSTRAINT pk_user_id PRIMARY KEY (id),
