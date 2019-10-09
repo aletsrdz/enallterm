@@ -21,7 +21,7 @@ use yii\db\Expression;
  * @property string $created_at
  * @property string $update_at
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     const STATUS_INSERTED = 0;
     const STATUS_ACTIVE = 1;
@@ -58,7 +58,8 @@ class User extends \yii\db\ActiveRecord
 
     public function beforeValidate() {
         if($this->isNewRecord){
-            $this->setUid();    
+            $this->setUid();  
+            $this->setAuthKey();  
         }        
         return parent::beforeValidate();
     }
@@ -75,11 +76,23 @@ class User extends \yii\db\ActiveRecord
         $this->uid = Yii::$app->getSecurity()->generatePasswordHash(date('YmdHis').rand(1,999999));
     }
 
+    private function setAuthKey(){
+        $this->auth_key = Yii::$app->getSecurity()->generateRandomString(60);
+    }
+
     public function activate() {
         $this->status = self::STATUS_ACTIVE;
         $this->setUid();
         return $this->save();
     }    
+
+    public static function findByEmail($email){
+        return self::findOne(['email'=>$email]);
+    }
+
+    public function validatePassword($password){
+        return Yii::$app->security->validatePassword($password, $this->password);
+    }
 
     /**
      * {@inheritdoc}
@@ -99,6 +112,29 @@ class User extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'update_at' => 'Update At',
         ];
+
+    }
+
+    public static function findIdentity($id){
+        return self::findOne($id);
+
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null){
+        return null;
+    }
+
+    public function getId(){
+        return $this->id;
+
+    }
+
+    public function getAuthKey(){
+        return $this->auth_key;
+    }
+
+    public function validateAuthKey($authKey){
+        return $this->auth_key === $authKey;
 
     }
 }

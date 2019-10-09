@@ -10,11 +10,13 @@ CREATE TABLE "user"(
 	password varchar(256) NOT NULL,
 	contact_email integer, --quitar no los tengo contemplados en el diseño de la bd para el sistema 
 	contact_phone integer, --quitar
+	auth_key varchar(60) NOT NULL,
 	status integer DEFAULT 0,
 	created_at TIMESTAMP NOT NULL DEFAULT now(),
 	update_at TIMESTAMP,
 	CONSTRAINT pk_user_id PRIMARY KEY (id),
-	CONSTRAINT uk_user_uid UNIQUE (uid)
+	CONSTRAINT uk_user_uid UNIQUE (uid),
+	CONSTRAINT uk_user_auth_key UNIQUE(auth_key)
 );
 
 COMMENT ON TABLE user IS 'Tabla para registrar todos los usuarios del sistema';
