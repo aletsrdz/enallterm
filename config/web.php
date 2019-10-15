@@ -34,7 +34,7 @@ $config = [
                 'class'=>'Swift_SmtpTransport',
                 'host'=>'smtp.gmail.com',//'smtp.gmail.com',
                 'username'=>'alexrdzallende@gmail.com',
-                'password'=>'PASSWORD',
+                'password'=>'kalyR45d9k',
                 'port'=>'465', //465 - 587
                 'encryption'=>'ssl', //ssl -tls
                 'streamOptions' => [
@@ -55,6 +55,9 @@ $config = [
             ],
         ],
         'db' => $db,
+        'authManager'=>[
+            'class'=>'yii\rbac\DbManager',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

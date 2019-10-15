@@ -89,6 +89,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public static function findByEmail($email){
         return self::findOne(['email'=>$email]);
     }
+    /*Metodo que lo utilizo para crear los roles del sistema*/
+    public static function findByUsername($username){ 
+        return self::findOne(['username'=>$username]);
+    }
 
     public function validatePassword($password){
         return Yii::$app->security->validatePassword($password, $this->password);
