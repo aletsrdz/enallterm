@@ -65,6 +65,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'simple'; //cambiar de layout
         return $this->render('index');
     }
 

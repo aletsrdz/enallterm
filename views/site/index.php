@@ -2,19 +2,18 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+use yii\helpers\Url;
+
+$this->title = 'Inicio';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
 
 
-        <h1>Congratulations!!!</h1>
+        <h1>Bienvenidos a ENALLTerm!!</h1>    
 
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p><a class="btn btn-lg btn-success" href="<?= Url::to('./site/register')?>">Vamos registrate</a></p>
     </div>
 
     <div class="body-content">
