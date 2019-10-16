@@ -16,6 +16,74 @@ class RbacController extends Controller
 
 		 	$auth->removeAll();	
 
+		 	$createPais = $auth->createPermission('createPais');
+		 	$createPais->description = 'Crear pais';
+		 	$updatePais = $auth->createPermission('updatePais');
+		 	$updatePais->description = 'Actualizar pais';
+		 	$deletePais = $auth->createPermission('deletePais');
+		 	$deletePais->description = 'Borrar pais';
+		 	$readPais = $auth->createPermission('readPais');
+		 	$readPais->description = 'Leer pais';
+
+		 	$createAreas = $auth->createPermission('createAreas');
+		 	$createAreas->description = 'Crear Areas';
+		 	$updateAreas = $auth->createPermission('updateAreas');
+		 	$updateAreas->description = 'Actualizar Areas';
+		 	$deleteAreas = $auth->createPermission('deleteAreas');
+		 	$deleteAreas->description = 'Borrar Areas';
+		 	$readAreas = $auth->createPermission('readAreas');
+		 	$readAreas->description = 'Leer Areas';
+
+		 	$createSubareas = $auth->createPermission('createSubareas');
+		 	$createSubareas->description = 'Crear Subareas';
+		 	$updateSubareas = $auth->createPermission('updateSubareas');
+		 	$updateSubareas->description = 'Actualizar Subareas';
+		 	$deleteSubareas = $auth->createPermission('deleteSubareas');
+		 	$deleteSubareas->description = 'Borrar Subareas';
+		 	$readSubareas = $auth->createPermission('readSubareas');
+		 	$readSubareas->description = 'Leer Subareas';		 	
+
+		 	//add permissions
+
+		 	$auth->add($createPais);
+		 	$auth->add($updatePais);
+		 	$auth->add($deletePais);
+		 	$auth->add($readPais);
+
+		 	$auth->add($createAreas);
+		 	$auth->add($updateAreas);
+		 	$auth->add($deleteAreas);
+		 	$auth->add($readAreas);
+
+		 	$auth->add($createSubareas);
+		 	$auth->add($updateSubareas);
+		 	$auth->add($deleteSubareas);
+		 	$auth->add($readSubareas);		 	
+
+		 	//create Superadmin role
+
+		 	$superadmin = $auth->createRole('super');
+		 	$auth->add($superadmin);
+		 	$auth->addChild($superadmin, $deletePais);
+			$auth->addChild($superadmin, $deleteAreas);
+			$auth->addChild($superadmin, $deleteSubareas);	
+
+			//create Admin role
+
+			$admin = $auth->createRole('admin');
+			$auth->add($admin);
+			$auth->addChild($admin, $createPais);
+			$auth->addChild($admin, $updatePais);	 			
+			$auth->addChild($admin, $readPais);
+			$auth->addChild($admin, $createAreas);
+			$auth->addChild($admin, $updateAreas);	 			
+			$auth->addChild($admin, $readAreas);			
+			$auth->addChild($admin, $createSubareas);
+			$auth->addChild($admin, $updateSubareas);	 			
+			$auth->addChild($admin, $readSubareas);
+
+			/*
+
 			 $createPost = $auth->createPermission('createPost');
 			 $createPost->description = 'Create a post';
 			 $updatePost = $auth->createPermission('updatePost');
@@ -51,6 +119,8 @@ class RbacController extends Controller
 			 $auth->addChild($admin, $updatePost);
 			 $auth->addChild($admin, $deletePost);
 			 $auth->addChild($admin, $author);
+
+			 */
 			 // assign roles
 			 $auth->assign($admin, User::findByUsername('alex')->id);// se cambio findByUsername por findByEmail
 			 $auth->assign($author, User::findByUsername('tere')->id);
