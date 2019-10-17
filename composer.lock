@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05251a4beeaa8dfa7849f73389718d5f",
+    "content-hash": "599d23a5f56748e802f5e3f9721ee876",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -17,12 +17,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/twbs/bootstrap/zipball/68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-<<<<<<< HEAD
-                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e",
-                "shasum": null
-=======
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.1,<4.0"
@@ -43,12 +38,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5e670ad62f50c738388d4dcec78d2888505ad77b",
-<<<<<<< HEAD
-                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b",
-                "shasum": null
-=======
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -69,12 +59,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-<<<<<<< HEAD
-                "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d",
-                "shasum": null
-=======
                 "reference": "15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
             },
             "type": "bower-asset",
             "license": [
@@ -92,12 +77,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-<<<<<<< HEAD
-                "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
-                "shasum": null
-=======
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
             },
             "type": "bower-asset"
         },
@@ -112,12 +92,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/aef7b953107264f00234902a3880eb50dafc48be",
-<<<<<<< HEAD
-                "reference": "aef7b953107264f00234902a3880eb50dafc48be",
-                "shasum": null
-=======
                 "reference": "aef7b953107264f00234902a3880eb50dafc48be"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
             },
             "require": {
                 "bower-asset/jquery": ">=1.8"
@@ -189,25 +164,6 @@
         },
         {
             "name": "doctrine/lexer",
-<<<<<<< HEAD
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/lexer.git",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.5"
-=======
             "version": "1.1.0",
             "source": {
                 "type": "git",
@@ -227,16 +183,11 @@
                 "doctrine/coding-standard": "^6.0",
                 "phpstan/phpstan": "^0.11.8",
                 "phpunit/phpunit": "^8.2"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
-                    "dev-master": "1.0.x-dev"
-=======
                     "dev-master": "1.1.x-dev"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
                 }
             },
             "autoload": {
@@ -250,24 +201,14 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-=======
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
                 },
                 {
-<<<<<<< HEAD
-=======
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com"
                 }
@@ -281,11 +222,7 @@
                 "parser",
                 "php"
             ],
-<<<<<<< HEAD
-            "time": "2019-06-08T11:03:04+00:00"
-=======
             "time": "2019-07-30T19:33:28+00:00"
->>>>>>> 85c56bbb38ad2d778d1dffd9fd093aa6e7942d40
         },
         {
             "name": "egulias/email-validator",
@@ -391,6 +328,51 @@
                 "html"
             ],
             "time": "2019-07-14T18:58:38+00:00"
+        },
+        {
+            "name": "host33/yii2-multilevel-vertical-menu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/host33/yii2-multilevel-vertical-menu.git",
+                "reference": "d5130481d1d74513e81737b9704a954762ea64e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/host33/yii2-multilevel-vertical-menu/zipball/d5130481d1d74513e81737b9704a954762ea64e1",
+                "reference": "d5130481d1d74513e81737b9704a954762ea64e1",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "host33\\multilevelverticalmenu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Oliveras Galvez",
+                    "email": "moginn@gmail.com",
+                    "homepage": "http://www.ho33.com/"
+                }
+            ],
+            "description": "This extension consists of a multilevel vertical menu.",
+            "homepage": "https://github.com/host33/yii2-multilevel-vertical-menu",
+            "keywords": [
+                "extension",
+                "menu",
+                "vertical menu",
+                "widget",
+                "yii2"
+            ],
+            "time": "2015-11-02T22:08:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3854,7 +3836,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "host33/yii2-multilevel-vertical-menu": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -28,7 +28,6 @@ AppAsset::register($this);
 
 <div class="wrap">
     <div class="container">
-        
 
         <?php if(!empty(Yii::$app->session->getFlash('success'))){
                 echo Alert::widget([
