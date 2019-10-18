@@ -39,8 +39,20 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
-            //['label' => 'About', 'url' => ['/site/about']],
-            //['label' => 'Contact', 'url' => ['/site/contact']],            
+            ['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
+            ['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],
+            [
+                'label' => 'Catalogos',
+                'visible'=> Yii::$app->user->can('super'),
+                'items' => [
+                     ['label' => 'Areas', 'url' => '#'],
+                     ['label' => 'Subareas', 'url' => '#'],
+                     ['label' => 'Paises', 'url' => '#'],
+                     '<li class="divider"></li>',
+                     '<li class="dropdown-header">Dropdown Header</li>',
+                     ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+                ],
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

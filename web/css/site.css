@@ -112,3 +112,13 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.col-xs-4 {
+    border-color: red;
+    border: solid;
+}
+
+.col-xs-8{
+    border-color: green;
+    border: solid;   
+}

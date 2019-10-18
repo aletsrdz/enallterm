@@ -72,6 +72,9 @@ class RbacController extends Controller
 
 			$admin = $auth->createRole('admin');
 			$auth->add($admin);
+
+			$auth->addChild($superadmin, $admin); //admin es hijo de superadmin
+
 			$auth->addChild($admin, $createPais);
 			$auth->addChild($admin, $updatePais);	 			
 			$auth->addChild($admin, $readPais);
@@ -81,6 +84,8 @@ class RbacController extends Controller
 			$auth->addChild($admin, $createSubareas);
 			$auth->addChild($admin, $updateSubareas);	 			
 			$auth->addChild($admin, $readSubareas);
+
+
 
 			/*
 
@@ -122,8 +127,9 @@ class RbacController extends Controller
 
 			 */
 			 // assign roles
-			 $auth->assign($admin, User::findByUsername('alex')->id);// se cambio findByUsername por findByEmail
-			 $auth->assign($author, User::findByUsername('tere')->id);
+			 $auth->assign($superadmin, User::findByUsername('alexrdz')->id);// se cambio findByUsername por findByEmail
+			 $auth->assign($admin, User::findByUsername('tere')->id);
+			 $auth->assign($admin, User::findByUsername('iona')->id);
 			 echo "Done!\n";
 			}catch(yii\console\Exception $e){
 				throw new $e;
