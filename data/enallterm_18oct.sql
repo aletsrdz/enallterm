@@ -5,7 +5,7 @@
 -- Dumped from database version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 -- Dumped by pg_dump version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 
--- Started on 2019-10-17 11:30:06 CDT
+-- Started on 2019-10-18 12:23:40 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3007 (class 0 OID 0)
+-- TOC entry 3043 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -53,7 +53,7 @@ CREATE TABLE public.areas (
 ALTER TABLE public.areas OWNER TO enallterm;
 
 --
--- TOC entry 3008 (class 0 OID 0)
+-- TOC entry 3044 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: TABLE areas; Type: COMMENT; Schema: public; Owner: enallterm
 --
@@ -78,13 +78,73 @@ CREATE SEQUENCE public.areas_id_seq
 ALTER TABLE public.areas_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3009 (class 0 OID 0)
+-- TOC entry 3045 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
 
 ALTER SEQUENCE public.areas_id_seq OWNED BY public.areas.id;
 
+
+--
+-- TOC entry 208 (class 1259 OID 50387)
+-- Name: auth_assignment; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.auth_assignment (
+    item_name character varying(64) NOT NULL,
+    user_id character varying(64) NOT NULL,
+    created_at integer
+);
+
+
+ALTER TABLE public.auth_assignment OWNER TO enallterm;
+
+--
+-- TOC entry 206 (class 1259 OID 50358)
+-- Name: auth_item; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.auth_item (
+    name character varying(64) NOT NULL,
+    type smallint NOT NULL,
+    description text,
+    rule_name character varying(64),
+    data bytea,
+    created_at integer,
+    updated_at integer
+);
+
+
+ALTER TABLE public.auth_item OWNER TO enallterm;
+
+--
+-- TOC entry 207 (class 1259 OID 50372)
+-- Name: auth_item_child; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.auth_item_child (
+    parent character varying(64) NOT NULL,
+    child character varying(64) NOT NULL
+);
+
+
+ALTER TABLE public.auth_item_child OWNER TO enallterm;
+
+--
+-- TOC entry 205 (class 1259 OID 50350)
+-- Name: auth_rule; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.auth_rule (
+    name character varying(64) NOT NULL,
+    data bytea,
+    created_at integer,
+    updated_at integer
+);
+
+
+ALTER TABLE public.auth_rule OWNER TO enallterm;
 
 --
 -- TOC entry 202 (class 1259 OID 42023)
@@ -114,7 +174,7 @@ CREATE TABLE public.paises (
 ALTER TABLE public.paises OWNER TO enallterm;
 
 --
--- TOC entry 3010 (class 0 OID 0)
+-- TOC entry 3046 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: TABLE paises; Type: COMMENT; Schema: public; Owner: enallterm
 --
@@ -139,7 +199,7 @@ CREATE SEQUENCE public.paises_id_seq
 ALTER TABLE public.paises_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3011 (class 0 OID 0)
+-- TOC entry 3047 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: paises_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
@@ -162,7 +222,7 @@ CREATE TABLE public.subareas (
 ALTER TABLE public.subareas OWNER TO enallterm;
 
 --
--- TOC entry 3012 (class 0 OID 0)
+-- TOC entry 3048 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: TABLE subareas; Type: COMMENT; Schema: public; Owner: enallterm
 --
@@ -187,7 +247,7 @@ CREATE SEQUENCE public.subareas_id_seq
 ALTER TABLE public.subareas_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3013 (class 0 OID 0)
+-- TOC entry 3049 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: subareas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
@@ -234,7 +294,7 @@ CREATE SEQUENCE public.user_id_seq
 ALTER TABLE public.user_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3014 (class 0 OID 0)
+-- TOC entry 3050 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
@@ -243,7 +303,7 @@ ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
 
 
 --
--- TOC entry 2850 (class 2604 OID 42007)
+-- TOC entry 2868 (class 2604 OID 42007)
 -- Name: areas id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -251,7 +311,7 @@ ALTER TABLE ONLY public.areas ALTER COLUMN id SET DEFAULT nextval('public.areas_
 
 
 --
--- TOC entry 2849 (class 2604 OID 41999)
+-- TOC entry 2867 (class 2604 OID 41999)
 -- Name: paises id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -259,7 +319,7 @@ ALTER TABLE ONLY public.paises ALTER COLUMN id SET DEFAULT nextval('public.paise
 
 
 --
--- TOC entry 2851 (class 2604 OID 42015)
+-- TOC entry 2869 (class 2604 OID 42015)
 -- Name: subareas id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -267,7 +327,7 @@ ALTER TABLE ONLY public.subareas ALTER COLUMN id SET DEFAULT nextval('public.sub
 
 
 --
--- TOC entry 2852 (class 2604 OID 50255)
+-- TOC entry 2870 (class 2604 OID 50255)
 -- Name: user id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -275,7 +335,7 @@ ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_
 
 
 --
--- TOC entry 2994 (class 0 OID 42004)
+-- TOC entry 3026 (class 0 OID 42004)
 -- Dependencies: 199
 -- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
@@ -289,18 +349,91 @@ COPY public.areas (id, nombre) FROM stdin;
 
 
 --
--- TOC entry 2997 (class 0 OID 42023)
+-- TOC entry 3035 (class 0 OID 50387)
+-- Dependencies: 208
+-- Data for Name: auth_assignment; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.auth_assignment (item_name, user_id, created_at) FROM stdin;
+super	4	1571332652
+admin	5	1571332652
+admin	6	1571332652
+\.
+
+
+--
+-- TOC entry 3033 (class 0 OID 50358)
+-- Dependencies: 206
+-- Data for Name: auth_item; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.auth_item (name, type, description, rule_name, data, created_at, updated_at) FROM stdin;
+createPais	2	Crear pais	\N	\N	1571332652	1571332652
+updatePais	2	Actualizar pais	\N	\N	1571332652	1571332652
+deletePais	2	Borrar pais	\N	\N	1571332652	1571332652
+readPais	2	Leer pais	\N	\N	1571332652	1571332652
+createAreas	2	Crear Areas	\N	\N	1571332652	1571332652
+updateAreas	2	Actualizar Areas	\N	\N	1571332652	1571332652
+deleteAreas	2	Borrar Areas	\N	\N	1571332652	1571332652
+readAreas	2	Leer Areas	\N	\N	1571332652	1571332652
+createSubareas	2	Crear Subareas	\N	\N	1571332652	1571332652
+updateSubareas	2	Actualizar Subareas	\N	\N	1571332652	1571332652
+deleteSubareas	2	Borrar Subareas	\N	\N	1571332652	1571332652
+readSubareas	2	Leer Subareas	\N	\N	1571332652	1571332652
+super	1	\N	\N	\N	1571332652	1571332652
+admin	1	\N	\N	\N	1571332652	1571332652
+\.
+
+
+--
+-- TOC entry 3034 (class 0 OID 50372)
+-- Dependencies: 207
+-- Data for Name: auth_item_child; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.auth_item_child (parent, child) FROM stdin;
+super	deletePais
+super	deleteAreas
+super	deleteSubareas
+super	admin
+admin	createPais
+admin	updatePais
+admin	readPais
+admin	createAreas
+admin	updateAreas
+admin	readAreas
+admin	createSubareas
+admin	updateSubareas
+admin	readSubareas
+\.
+
+
+--
+-- TOC entry 3032 (class 0 OID 50350)
+-- Dependencies: 205
+-- Data for Name: auth_rule; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.auth_rule (name, data, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3029 (class 0 OID 42023)
 -- Dependencies: 202
 -- Data for Name: migration; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
 COPY public.migration (version, apply_time) FROM stdin;
 m000000_000000_base	1569944265
+m140506_102106_rbac_init	1571331962
+m170907_052038_rbac_add_index_on_auth_assignment_user_id	1571331962
+m180523_151638_rbac_updates_indexes_without_prefix	1571331962
 \.
 
 
 --
--- TOC entry 2992 (class 0 OID 41996)
+-- TOC entry 3024 (class 0 OID 41996)
 -- Dependencies: 197
 -- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
@@ -332,7 +465,7 @@ COPY public.paises (id, nombre, abreviatura) FROM stdin;
 
 
 --
--- TOC entry 2996 (class 0 OID 42012)
+-- TOC entry 3028 (class 0 OID 42012)
 -- Dependencies: 201
 -- Data for Name: subareas; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
@@ -455,14 +588,13 @@ COPY public.subareas (id, id_areas, nombre) FROM stdin;
 
 
 --
--- TOC entry 2999 (class 0 OID 50252)
+-- TOC entry 3031 (class 0 OID 50252)
 -- Dependencies: 204
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
 COPY public."user" (id, uid, username, email, password, contact_email, contact_phone, status, created_at, update_at, auth_key) FROM stdin;
 11	$2y$13$uidBm6k41r.XF1pOrGikmureybRbBC5mJ9JtbMhTeHJj/oyXcfpJy	lingüísta2	lingüísta2@gmail.com	$2y$13$QhFFnE/34YlZXG1HblutTO1jdlayRcPqzcxgIioxxYnMoysBTd9Qy	\N	\N	1	2019-10-17 10:42:13.657389	2019-10-17 10:42:13.657389	1d1H8NsBQxqYj0m0rIn69t_98x5_EBxCk9yg7YPaDUyD2cG9eUVv4x4nQsM0
-4	$2y$13$FQlDyhSwRYXGt.4jE12jLu8orxb5cccQvT00ZTdYZ.A.Ii2rN.2Yu	alexrdz	alexrdzallende@gmail.com	$2y$13$7khqD.Gr/HT2KcBtjQjI0OLvt2m2lzHxpBUDtuWBxvfNP37.BlV76	\N	\N	1	2019-10-17 10:20:49.479493	2019-10-17 10:21:03.450739	D3qkWLo8hQ-oOwXvsJe5BfM-IIGWg5ua-npY4mPXytSvEORJoGU4WHlq82m5
 5	$2y$13$49DVvUp1o7GV7nTPMOJJgu6pe1BEOmROY74yf2B.WxXMwLCMtOq6a	tere	tere@enallt.unam.mx	$2y$13$TPjbC7AhCwtih..RYFrZSu0C6Z9LxwfEIlL38gTgzw042crkPn5Iy	\N	\N	1	2019-10-17 10:22:20.946685	2019-10-17 10:22:54.284843	32fn5nLI6ZQZcrEFfTqK8BFDyHZnNz-rl-MLsCgWtjrIo4OpG4XGtBHrrO82
 6	$2y$13$di0RT7iK3QKeFkSh5L8PEO5N14vMRiAtB8w/MveRTGtHNHEpQLMGK	iona	iona@enallt.unam.mx	$2y$13$XoOWGMLM3tNwb5hnT8YlNu8Cv8ChAGA4u.uMGc2iFk5C/YYFhxFY2	\N	\N	1	2019-10-17 10:35:31.146473	2019-10-17 10:35:42.674486	eaRR1KHwDzxKHzyticYb16ek4P6u__JfqHAo_yehcm0PBc2hprw0Z_JN7Eg_
 7	$2y$13$WLjseNbKYNuEemPSXh77b.rUn2nFg8jdYgS/SRMqN1h25PhMDqXqW	experto1	experto1@gmail.com	$2y$13$MF7TVW8UeKlzTk0giPEhb.jC/3xk5E.cFbh.sLrFW4yNqfBY6r0.i	\N	\N	1	2019-10-17 10:37:03.33043	2019-10-17 10:37:15.634164	TsNNwkbnk6X_t7VCQ82AQ87ydMTDGKkSYo5dIF_yxNRGEOdmRxeUk5xcDYwx
@@ -476,12 +608,13 @@ COPY public."user" (id, uid, username, email, password, contact_email, contact_p
 15	$2y$13$iuAWgj6mi4rkCbKEd93S4.DF.K01OGgrZjZ/6YO//ZTk0fg9imouO	alumno3	alumno3@gmail.com	$2y$13$56CS4u1U1aWaKjHSJDQqbuhWf4AcG1x5qRdNJy4lT.YqgAalL6lTe	\N	\N	1	2019-10-17 10:51:45.980709	2019-10-17 10:56:32.295502	tIHu0lyRetksN05dBJ0MolTJy3pDgWbYGOSoUiYh-5fXlt6Cwe2H6GNaLuQz
 13	$2y$13$2eRRThvMP02jCVh/ireOROvXdWHwSEDReMP1Aqea0UYR5GdnrGrUe	alumno1	alumno1@gmail.com	$2y$13$cAPEyYmIytuEkLyDJE8FFu.1ARrdM1ALQ1QS6TFYl2I1PklnNsiFW	\N	\N	1	2019-10-17 10:49:39.547314	2019-10-17 10:49:39.547314	LRKfLbj_Cu9UGP4K9EgvAd2OAEsMrLpBEOlC6h-oqq5NMb-QJ7shLz_b6bAA
 14	$2y$13$J9ucWPnkOlYO6v5eAVu4je0GbxMlLC4mi5Fz1zuBtwAiFSJL.Otse	alumno2	alumno2@gmail.com	$2y$13$f2eXrZyx/23ndJXuqg/ZNuVJctAhImBstHWzaSUc5akW2YQ0urueK	\N	\N	1	2019-10-17 10:50:38.889751	2019-10-17 10:50:38.889751	obJ48q2PX0GD_B8p5azjbuQ_qaGwu0JmHJDhCUcRrPPbMSirHLxCAKg_RFLu
+4	$2y$13$FQlDyhSwRYXGt.4jE12jLu8orxb5cccQvT00ZTdYZ.A.Ii2rN.2Yu	alexrdz	alexrdzallende@gmail.com	$2y$13$6nRaWfJfSr.a0n.NSy4ovOPWlfc8IYJwiZI5BClPjS61nykcjYzqK	\N	\N	1	2019-10-17 10:20:49.479493	2019-10-17 10:21:03.450739	D3qkWLo8hQ-oOwXvsJe5BfM-IIGWg5ua-npY4mPXytSvEORJoGU4WHlq82m5
 19	$2y$13$2yFUMt3x9S119RzgGXB7ueCzI6uBU24FSq4naXVo9yfBvR1K/2Wc.	alumno7	alumno7@gmail.com	$2y$13$zKv5JwuV7QVrGfuP5fHR8uSJZQG6iQV8VbWyiNS7xPXTKpIHDT1tG	\N	\N	1	2019-10-17 10:57:11.191783	2019-10-17 11:02:46.008294	fUjJlHWwa7SIu84YUPFNVF4-mXRrIg5HASniXdVUBLg-s6zVPp4-cSCEbBSg
 \.
 
 
 --
--- TOC entry 3015 (class 0 OID 0)
+-- TOC entry 3051 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
@@ -490,7 +623,7 @@ SELECT pg_catalog.setval('public.areas_id_seq', 4, true);
 
 
 --
--- TOC entry 3016 (class 0 OID 0)
+-- TOC entry 3052 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: paises_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
@@ -499,7 +632,7 @@ SELECT pg_catalog.setval('public.paises_id_seq', 22, true);
 
 
 --
--- TOC entry 3017 (class 0 OID 0)
+-- TOC entry 3053 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: subareas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
@@ -508,7 +641,7 @@ SELECT pg_catalog.setval('public.subareas_id_seq', 113, true);
 
 
 --
--- TOC entry 3018 (class 0 OID 0)
+-- TOC entry 3054 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
@@ -517,7 +650,43 @@ SELECT pg_catalog.setval('public.user_id_seq', 19, true);
 
 
 --
--- TOC entry 2862 (class 2606 OID 42027)
+-- TOC entry 2895 (class 2606 OID 50391)
+-- Name: auth_assignment auth_assignment_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_assignment
+    ADD CONSTRAINT auth_assignment_pkey PRIMARY KEY (item_name, user_id);
+
+
+--
+-- TOC entry 2893 (class 2606 OID 50376)
+-- Name: auth_item_child auth_item_child_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_item_child
+    ADD CONSTRAINT auth_item_child_pkey PRIMARY KEY (parent, child);
+
+
+--
+-- TOC entry 2890 (class 2606 OID 50365)
+-- Name: auth_item auth_item_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_item
+    ADD CONSTRAINT auth_item_pkey PRIMARY KEY (name);
+
+
+--
+-- TOC entry 2888 (class 2606 OID 50357)
+-- Name: auth_rule auth_rule_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_rule
+    ADD CONSTRAINT auth_rule_pkey PRIMARY KEY (name);
+
+
+--
+-- TOC entry 2880 (class 2606 OID 42027)
 -- Name: migration migration_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -526,7 +695,7 @@ ALTER TABLE ONLY public.migration
 
 
 --
--- TOC entry 2858 (class 2606 OID 42009)
+-- TOC entry 2876 (class 2606 OID 42009)
 -- Name: areas pk_areas_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -535,7 +704,7 @@ ALTER TABLE ONLY public.areas
 
 
 --
--- TOC entry 2856 (class 2606 OID 42001)
+-- TOC entry 2874 (class 2606 OID 42001)
 -- Name: paises pk_paises_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -544,7 +713,7 @@ ALTER TABLE ONLY public.paises
 
 
 --
--- TOC entry 2860 (class 2606 OID 42017)
+-- TOC entry 2878 (class 2606 OID 42017)
 -- Name: subareas pk_subareas_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -553,7 +722,7 @@ ALTER TABLE ONLY public.subareas
 
 
 --
--- TOC entry 2864 (class 2606 OID 50262)
+-- TOC entry 2882 (class 2606 OID 50262)
 -- Name: user pk_user_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -562,7 +731,7 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 2866 (class 2606 OID 50266)
+-- TOC entry 2884 (class 2606 OID 50266)
 -- Name: user uk_user_auth_key; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -571,7 +740,7 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 2868 (class 2606 OID 50264)
+-- TOC entry 2886 (class 2606 OID 50264)
 -- Name: user uk_user_uid; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -580,7 +749,59 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 2869 (class 2606 OID 42018)
+-- TOC entry 2896 (class 1259 OID 50398)
+-- Name: idx-auth_assignment-user_id; Type: INDEX; Schema: public; Owner: enallterm
+--
+
+CREATE INDEX "idx-auth_assignment-user_id" ON public.auth_assignment USING btree (user_id);
+
+
+--
+-- TOC entry 2891 (class 1259 OID 50399)
+-- Name: idx-auth_item-type; Type: INDEX; Schema: public; Owner: enallterm
+--
+
+CREATE INDEX "idx-auth_item-type" ON public.auth_item USING btree (type);
+
+
+--
+-- TOC entry 2901 (class 2606 OID 50392)
+-- Name: auth_assignment auth_assignment_item_name_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_assignment
+    ADD CONSTRAINT auth_assignment_item_name_fkey FOREIGN KEY (item_name) REFERENCES public.auth_item(name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2900 (class 2606 OID 50382)
+-- Name: auth_item_child auth_item_child_child_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_item_child
+    ADD CONSTRAINT auth_item_child_child_fkey FOREIGN KEY (child) REFERENCES public.auth_item(name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2899 (class 2606 OID 50377)
+-- Name: auth_item_child auth_item_child_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_item_child
+    ADD CONSTRAINT auth_item_child_parent_fkey FOREIGN KEY (parent) REFERENCES public.auth_item(name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2898 (class 2606 OID 50366)
+-- Name: auth_item auth_item_rule_name_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.auth_item
+    ADD CONSTRAINT auth_item_rule_name_fkey FOREIGN KEY (rule_name) REFERENCES public.auth_rule(name) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
+-- TOC entry 2897 (class 2606 OID 42018)
 -- Name: subareas fk_subareas_id_id_areas; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -588,7 +809,7 @@ ALTER TABLE ONLY public.subareas
     ADD CONSTRAINT fk_subareas_id_id_areas FOREIGN KEY (id_areas) REFERENCES public.areas(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
--- Completed on 2019-10-17 11:30:09 CDT
+-- Completed on 2019-10-18 12:23:45 CDT
 
 --
 -- PostgreSQL database dump complete
