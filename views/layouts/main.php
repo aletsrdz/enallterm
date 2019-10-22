@@ -9,6 +9,9 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\bootstrap\Alert;
+use yii\models\User;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 AppAsset::register($this);
 ?>
@@ -40,17 +43,17 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
-            ['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],
+            ['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],            
             [
                 'label' => 'Catalogos',
                 'visible'=> Yii::$app->user->can('super'),
                 'items' => [
                      ['label' => 'Areas', 'url' => '#'],
                      ['label' => 'Subareas', 'url' => '#'],
-                     ['label' => 'Paises', 'url' => '#'],
+                     ['label' => 'Paises', 'url' => '/site/check'],
                      '<li class="divider"></li>',
-                     '<li class="dropdown-header">Dropdown Header</li>',
-                     ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+                     '<li class="dropdown-header">Administración</li>',
+                     ['label' => 'Lista de permisos', 'url' => './check'],
                 ],
             ],
             Yii::$app->user->isGuest ? (

@@ -12,6 +12,7 @@ use app\models\ContactForm;
 use app\models\User;
 use app\models\Mailer as AcmeMailer;
 use yii\web\NotFoundHttpException;
+use yii\helpers\ArrayHelper;
 
 
 class SiteController extends Controller
@@ -148,6 +149,19 @@ class SiteController extends Controller
         }
         return $this->render('contact', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionCheck(){
+        $users = User::find()->orderBy('id desc')->all();
+        $permissions = Yii::$app->authManager->getPermissions();
+
+        $guestUser = new User();
+        $guestUser->username = 'guest';
+
+        return $this->render('checkPermissions',[
+            'users'=> ArrayHelper::merge([$guestUser], $users),
+            'permissions'=>$permissions,
         ]);
     }
 
