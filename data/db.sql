@@ -196,3 +196,34 @@ INSERT INTO subareas (id_areas, nombre) VALUES ('4','Música y Tecnología Artí
 INSERT INTO subareas (id_areas, nombre) VALUES ('4','Pedagogía');
 INSERT INTO subareas (id_areas, nombre) VALUES ('4','Teatro y Actuación');
 INSERT INTO subareas (id_areas, nombre) VALUES ('4','Traducción');
+
+CREATE TABLE materia(
+	id SERIAL NOT NULL,
+	nombre varchar(100) NOT NULL,
+	abreviatura varchar(50) NOT NULL,
+	CONSTRAINT pk_materia_id PRIMARY KEY (id)
+);
+
+COMMENT ON TABLE materia IS 'Tabla de materia';
+
+CREATE TABLE grupo(
+	id SERIAL NOT NULL,
+	nombre varchar(100) NOT NULL,
+	id_materia integer NOT NULL,
+	CONSTRAINT pk_grupo_id PRIMARY KEY (id),
+	CONSTRAINT fk_grupo_id_materia FOREIGN KEY (id_materia) REFERENCES materia
+		ON UPDATE RESTRICT ON DELETE RESTRICT
+);
+
+COMMENT ON TABLE grupo IS 'Tabla de grupo';
+
+CREATE TABLE equipo(
+	id SERIAL NOT NULL,
+	nombre varchar(100) NOT NULL,
+	id_grupo integer NOT NULL,
+	CONSTRAINT pk_equipo_id PRIMARY KEY (id),
+	CONSTRAINT fk_equipo_id_grupo FOREIGN KEY (id_grupo) REFERENCES grupo
+		ON UPDATE RESTRICT ON DELETE RESTRICT
+);
+
+COMMENT ON TABLE grupo IS 'Tabla de equipo';
