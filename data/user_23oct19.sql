@@ -81,6 +81,7 @@ COPY public."user" (id, uid, username, email, password, contact_email, contact_p
 7	$2y$13$WLjseNbKYNuEemPSXh77b.rUn2nFg8jdYgS/SRMqN1h25PhMDqXqW	experto1	experto1@gmail.com	$2y$13$MF7TVW8UeKlzTk0giPEhb.jC/3xk5E.cFbh.sLrFW4yNqfBY6r0.i	\N	\N	1	2019-10-17 10:37:03.33043	2019-10-17 10:37:15.634164	TsNNwkbnk6X_t7VCQ82AQ87ydMTDGKkSYo5dIF_yxNRGEOdmRxeUk5xcDYwx
 8	$2y$13$UGRgtvBO0c2ctFREFPQkC.iD7CCc2X6/DHyDJzp6uu7SwBAYNQgH6	experto2	experto2@gmail.com	$2y$13$MEkrlxY2s3b2kODcHgMVe.96rqm99uHK0XduxfSPB4vjIC55tOzn2	\N	\N	1	2019-10-17 10:38:17.989294	2019-10-17 10:38:27.969711	bgdhHJca3OXFdDkW2w3gBHqkcfWmEtgKYI5DCayxl_YNoyoJQoYmmDRQN732
 9	$2y$13$kjTaUEVACPokpDmZM9j0qOiEHq6Zcl.E.RD6hKiSVlXxj10mTbrWG	experto3	experto3@gmail.com	$2y$13$glppZTpoVN7N.Tm.0S/Tze1IRJgPomwvkJr92HmQWPIz8pXFmk3CO	\N	\N	1	2019-10-17 10:39:57.364927	2019-10-17 10:40:06.426635	raZI5qxcpD4G3hEsBnqt9RVN7GnKo5PEdocZtd5zpF3AaOAIAIvOWQBM7E0v
+22	$2y$13$7ZpoEMTpFWO9a2mJX6ts8eg9J9eGClZaYh4bAs.QkfiZCGB030IOO	alumno10	alumno10@gmail.com	$2y$13$K4eOjCXQh0RcdKIlgc6cxO4JIjTOc0n6yI1br.DBlBUuGiqmGx34q	\N	\N	1	2019-10-23 12:11:15.276495	2019-10-23 12:11:15.276495	HLAgU9Jg4fGJh2iy-UDLNXBIqTqX6Jmh5M6xEiIWvw8hprxvPdLMkcj0dNKd
 18	$2y$13$F6kdP1h/yZ3rMUk/a.MqcOC./GqMbZw8MMhA5x9rM8oRCwnIuWU/q	alumno6	alumno6@gmail.com	$2y$13$Rk73QpDqWE5Yqfr2kjeAXe9U5P.uyA5nF8umMYR67ozBJBOWn2YA6	\N	\N	1	2019-10-17 10:54:22.141131	2019-10-17 10:55:24.509722	nUPE_fPTf2sbzDlO6UZGn2g6z1Eg7vzhWwiM5_8e8QIVUA_v66C3a9NkiRA_
 10	$2y$13$m.jEnvuXrc/btgaBzVba6O9bC8VwBbcs/YZluDobeU0fdQ33UZcdq	lingüísta1	lingüísta1@gmail.com	$2y$13$nEkztY4Xu1RF/wzE1DNWne1k7EC5leTozMIFXGwN0F6qviQSh.93G	\N	\N	1	2019-10-17 10:41:12.937028	2019-10-17 10:41:12.937028	ecDURZtiel3r1P5yv3IoyHP0sTWbTd4veFmuW8aHcemniQpKMJGcezKWKS75
 17	$2y$13$b/1OxnCOKiRSGAGW0yT41.KTGzgq1pLxqfWNXVaJ9PldWT3DCJune	alumno5	alumno5@gmail.com	$2y$13$CBs1DTPxutIWNXlyG3t9RuJJ4P.76H42PSHtqQYxWJpMUJAZ/tZ12	\N	\N	1	2019-10-17 10:53:24.177036	2019-10-17 10:55:49.699101	NWhrLShIap_rFDNyC0XZsUwmcyL70j50k2WvoPOVfIjecfd1b0wI8y-HvEz0
@@ -90,7 +91,9 @@ COPY public."user" (id, uid, username, email, password, contact_email, contact_p
 13	$2y$13$2eRRThvMP02jCVh/ireOROvXdWHwSEDReMP1Aqea0UYR5GdnrGrUe	alumno1	alumno1@gmail.com	$2y$13$cAPEyYmIytuEkLyDJE8FFu.1ARrdM1ALQ1QS6TFYl2I1PklnNsiFW	\N	\N	1	2019-10-17 10:49:39.547314	2019-10-17 10:49:39.547314	LRKfLbj_Cu9UGP4K9EgvAd2OAEsMrLpBEOlC6h-oqq5NMb-QJ7shLz_b6bAA
 14	$2y$13$J9ucWPnkOlYO6v5eAVu4je0GbxMlLC4mi5Fz1zuBtwAiFSJL.Otse	alumno2	alumno2@gmail.com	$2y$13$f2eXrZyx/23ndJXuqg/ZNuVJctAhImBstHWzaSUc5akW2YQ0urueK	\N	\N	1	2019-10-17 10:50:38.889751	2019-10-17 10:50:38.889751	obJ48q2PX0GD_B8p5azjbuQ_qaGwu0JmHJDhCUcRrPPbMSirHLxCAKg_RFLu
 4	$2y$13$FQlDyhSwRYXGt.4jE12jLu8orxb5cccQvT00ZTdYZ.A.Ii2rN.2Yu	alexrdz	alexrdzallende@gmail.com	$2y$13$6nRaWfJfSr.a0n.NSy4ovOPWlfc8IYJwiZI5BClPjS61nykcjYzqK	\N	\N	1	2019-10-17 10:20:49.479493	2019-10-17 10:21:03.450739	D3qkWLo8hQ-oOwXvsJe5BfM-IIGWg5ua-npY4mPXytSvEORJoGU4WHlq82m5
+20	$2y$13$TSqYwPax0QKbqjTcQSY5iu3N2qJVprPmK2QGQGYK6NJ4EIsj0rAG.	alumno8	alumno8@gmail.com	$2y$13$/fdjFqn9SIaakYonBKnynOtXO1t2cmnkm5JTzK8rvNPuHrPZA9Tze	\N	\N	1	2019-10-23 12:03:40.759394	2019-10-23 12:04:26.143039	4k1sM_hNrGKx4YBHL8macDrFtDqpjFtRVDsNqssvy1MJHPV-lFc8fhJaxyod
 19	$2y$13$2yFUMt3x9S119RzgGXB7ueCzI6uBU24FSq4naXVo9yfBvR1K/2Wc.	alumno7	alumno7@gmail.com	$2y$13$zKv5JwuV7QVrGfuP5fHR8uSJZQG6iQV8VbWyiNS7xPXTKpIHDT1tG	\N	\N	1	2019-10-17 10:57:11.191783	2019-10-17 11:02:46.008294	fUjJlHWwa7SIu84YUPFNVF4-mXRrIg5HASniXdVUBLg-s6zVPp4-cSCEbBSg
+21	$2y$13$aDOmWf6zKhqe6vco9M2BHuJlO3xLqtQb0Zr/o6KCnuCPRfDjBPNfu	alumno9	alumno9@gmail.com	$2y$13$0xYyB.NQ8M9x6XepX4j1VOGQafxaPCdim9Xb0lPax4YJ76mfvkcUe	\N	\N	1	2019-10-23 12:06:36.756193	2019-10-23 12:06:36.756193	V5hHlZ_95WlJThEtWsO2kx3X0L9MScI_Nf4g8_wCAS2mZkyfJNGFbW1ItjxO
 \.
 
 
@@ -98,7 +101,7 @@ COPY public."user" (id, uid, username, email, password, contact_email, contact_p
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
 
-SELECT pg_catalog.setval('public.user_id_seq', 19, true);
+SELECT pg_catalog.setval('public.user_id_seq', 22, true);
 
 
 --

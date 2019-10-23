@@ -5,7 +5,7 @@
 -- Dumped from database version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 -- Dumped by pg_dump version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 
--- Started on 2019-10-18 12:23:40 CDT
+-- Started on 2019-10-23 18:57:12 CDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3043 (class 0 OID 0)
+-- TOC entry 3128 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -53,7 +53,7 @@ CREATE TABLE public.areas (
 ALTER TABLE public.areas OWNER TO enallterm;
 
 --
--- TOC entry 3044 (class 0 OID 0)
+-- TOC entry 3129 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: TABLE areas; Type: COMMENT; Schema: public; Owner: enallterm
 --
@@ -78,7 +78,7 @@ CREATE SEQUENCE public.areas_id_seq
 ALTER TABLE public.areas_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3045 (class 0 OID 0)
+-- TOC entry 3130 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
@@ -87,7 +87,7 @@ ALTER SEQUENCE public.areas_id_seq OWNED BY public.areas.id;
 
 
 --
--- TOC entry 208 (class 1259 OID 50387)
+-- TOC entry 206 (class 1259 OID 50387)
 -- Name: auth_assignment; Type: TABLE; Schema: public; Owner: enallterm
 --
 
@@ -101,7 +101,7 @@ CREATE TABLE public.auth_assignment (
 ALTER TABLE public.auth_assignment OWNER TO enallterm;
 
 --
--- TOC entry 206 (class 1259 OID 50358)
+-- TOC entry 204 (class 1259 OID 50358)
 -- Name: auth_item; Type: TABLE; Schema: public; Owner: enallterm
 --
 
@@ -119,7 +119,7 @@ CREATE TABLE public.auth_item (
 ALTER TABLE public.auth_item OWNER TO enallterm;
 
 --
--- TOC entry 207 (class 1259 OID 50372)
+-- TOC entry 205 (class 1259 OID 50372)
 -- Name: auth_item_child; Type: TABLE; Schema: public; Owner: enallterm
 --
 
@@ -132,7 +132,7 @@ CREATE TABLE public.auth_item_child (
 ALTER TABLE public.auth_item_child OWNER TO enallterm;
 
 --
--- TOC entry 205 (class 1259 OID 50350)
+-- TOC entry 203 (class 1259 OID 50350)
 -- Name: auth_rule; Type: TABLE; Schema: public; Owner: enallterm
 --
 
@@ -147,7 +147,280 @@ CREATE TABLE public.auth_rule (
 ALTER TABLE public.auth_rule OWNER TO enallterm;
 
 --
--- TOC entry 202 (class 1259 OID 42023)
+-- TOC entry 220 (class 1259 OID 50568)
+-- Name: autor; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.autor (
+    id integer NOT NULL,
+    ficha_terminologica_id integer NOT NULL,
+    user_id integer NOT NULL,
+    nombre character varying(255),
+    apaterno character varying(255),
+    amaterno character varying(255),
+    inscrito_id integer
+);
+
+
+ALTER TABLE public.autor OWNER TO enallterm;
+
+--
+-- TOC entry 219 (class 1259 OID 50566)
+-- Name: autor_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
+--
+
+CREATE SEQUENCE public.autor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.autor_id_seq OWNER TO enallterm;
+
+--
+-- TOC entry 3131 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: autor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
+--
+
+ALTER SEQUENCE public.autor_id_seq OWNED BY public.autor.id;
+
+
+--
+-- TOC entry 214 (class 1259 OID 50440)
+-- Name: equipo; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.equipo (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    grupo_id integer NOT NULL
+);
+
+
+ALTER TABLE public.equipo OWNER TO enallterm;
+
+--
+-- TOC entry 213 (class 1259 OID 50438)
+-- Name: equipo_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
+--
+
+CREATE SEQUENCE public.equipo_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.equipo_id_seq OWNER TO enallterm;
+
+--
+-- TOC entry 3132 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: equipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
+--
+
+ALTER SEQUENCE public.equipo_id_seq OWNED BY public.equipo.id;
+
+
+--
+-- TOC entry 218 (class 1259 OID 50541)
+-- Name: ficha_terminologica; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.ficha_terminologica (
+    id integer NOT NULL,
+    area_id integer,
+    subarea_id integer,
+    pais_id integer,
+    temino_origen text NOT NULL,
+    termino_meta text NOT NULL,
+    definicion_origen text NOT NULL,
+    definicion_meta text NOT NULL,
+    fuente_origen text,
+    fuente_meta text,
+    contexto_origen text,
+    contexto_meta text,
+    no_recomendado text,
+    notas_fichat text,
+    url_imagen character varying(255),
+    url_video character varying(255),
+    url_sonido character varying(255),
+    create_at timestamp without time zone DEFAULT now() NOT NULL,
+    update_at timestamp without time zone
+);
+
+
+ALTER TABLE public.ficha_terminologica OWNER TO enallterm;
+
+--
+-- TOC entry 217 (class 1259 OID 50539)
+-- Name: ficha_terminologica_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
+--
+
+CREATE SEQUENCE public.ficha_terminologica_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ficha_terminologica_id_seq OWNER TO enallterm;
+
+--
+-- TOC entry 3133 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: ficha_terminologica_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
+--
+
+ALTER SEQUENCE public.ficha_terminologica_id_seq OWNED BY public.ficha_terminologica.id;
+
+
+--
+-- TOC entry 212 (class 1259 OID 50427)
+-- Name: grupo; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.grupo (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    materia_id integer NOT NULL
+);
+
+
+ALTER TABLE public.grupo OWNER TO enallterm;
+
+--
+-- TOC entry 3134 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: TABLE grupo; Type: COMMENT; Schema: public; Owner: enallterm
+--
+
+COMMENT ON TABLE public.grupo IS 'Tabla de para guardar los autores de las fichas terminológicas';
+
+
+--
+-- TOC entry 211 (class 1259 OID 50425)
+-- Name: grupo_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
+--
+
+CREATE SEQUENCE public.grupo_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.grupo_id_seq OWNER TO enallterm;
+
+--
+-- TOC entry 3135 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: grupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
+--
+
+ALTER SEQUENCE public.grupo_id_seq OWNED BY public.grupo.id;
+
+
+--
+-- TOC entry 216 (class 1259 OID 50473)
+-- Name: inscrito; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.inscrito (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    materia_id integer NOT NULL,
+    grupo_id integer NOT NULL,
+    equipo_id integer NOT NULL
+);
+
+
+ALTER TABLE public.inscrito OWNER TO enallterm;
+
+--
+-- TOC entry 215 (class 1259 OID 50471)
+-- Name: inscrito_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
+--
+
+CREATE SEQUENCE public.inscrito_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.inscrito_id_seq OWNER TO enallterm;
+
+--
+-- TOC entry 3136 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: inscrito_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
+--
+
+ALTER SEQUENCE public.inscrito_id_seq OWNED BY public.inscrito.id;
+
+
+--
+-- TOC entry 210 (class 1259 OID 50419)
+-- Name: materia; Type: TABLE; Schema: public; Owner: enallterm
+--
+
+CREATE TABLE public.materia (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.materia OWNER TO enallterm;
+
+--
+-- TOC entry 3137 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: TABLE materia; Type: COMMENT; Schema: public; Owner: enallterm
+--
+
+COMMENT ON TABLE public.materia IS 'Tabla de materia';
+
+
+--
+-- TOC entry 209 (class 1259 OID 50417)
+-- Name: materia_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
+--
+
+CREATE SEQUENCE public.materia_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.materia_id_seq OWNER TO enallterm;
+
+--
+-- TOC entry 3138 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: materia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
+--
+
+ALTER SEQUENCE public.materia_id_seq OWNED BY public.materia.id;
+
+
+--
+-- TOC entry 200 (class 1259 OID 42023)
 -- Name: migration; Type: TABLE; Schema: public; Owner: enallterm
 --
 
@@ -174,7 +447,7 @@ CREATE TABLE public.paises (
 ALTER TABLE public.paises OWNER TO enallterm;
 
 --
--- TOC entry 3046 (class 0 OID 0)
+-- TOC entry 3139 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: TABLE paises; Type: COMMENT; Schema: public; Owner: enallterm
 --
@@ -199,7 +472,7 @@ CREATE SEQUENCE public.paises_id_seq
 ALTER TABLE public.paises_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3047 (class 0 OID 0)
+-- TOC entry 3140 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: paises_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
@@ -208,13 +481,13 @@ ALTER SEQUENCE public.paises_id_seq OWNED BY public.paises.id;
 
 
 --
--- TOC entry 201 (class 1259 OID 42012)
+-- TOC entry 208 (class 1259 OID 50406)
 -- Name: subareas; Type: TABLE; Schema: public; Owner: enallterm
 --
 
 CREATE TABLE public.subareas (
     id integer NOT NULL,
-    id_areas integer NOT NULL,
+    areas_id integer NOT NULL,
     nombre character varying(250) NOT NULL
 );
 
@@ -222,8 +495,8 @@ CREATE TABLE public.subareas (
 ALTER TABLE public.subareas OWNER TO enallterm;
 
 --
--- TOC entry 3048 (class 0 OID 0)
--- Dependencies: 201
+-- TOC entry 3141 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: TABLE subareas; Type: COMMENT; Schema: public; Owner: enallterm
 --
 
@@ -231,7 +504,7 @@ COMMENT ON TABLE public.subareas IS 'Tabla de subáreas del conocimiento';
 
 
 --
--- TOC entry 200 (class 1259 OID 42010)
+-- TOC entry 207 (class 1259 OID 50404)
 -- Name: subareas_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
 --
 
@@ -247,8 +520,8 @@ CREATE SEQUENCE public.subareas_id_seq
 ALTER TABLE public.subareas_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3049 (class 0 OID 0)
--- Dependencies: 200
+-- TOC entry 3142 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: subareas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
 
@@ -256,7 +529,7 @@ ALTER SEQUENCE public.subareas_id_seq OWNED BY public.subareas.id;
 
 
 --
--- TOC entry 204 (class 1259 OID 50252)
+-- TOC entry 202 (class 1259 OID 50252)
 -- Name: user; Type: TABLE; Schema: public; Owner: enallterm
 --
 
@@ -278,7 +551,7 @@ CREATE TABLE public."user" (
 ALTER TABLE public."user" OWNER TO enallterm;
 
 --
--- TOC entry 203 (class 1259 OID 50250)
+-- TOC entry 201 (class 1259 OID 50250)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: enallterm
 --
 
@@ -294,8 +567,8 @@ CREATE SEQUENCE public.user_id_seq
 ALTER TABLE public.user_id_seq OWNER TO enallterm;
 
 --
--- TOC entry 3050 (class 0 OID 0)
--- Dependencies: 203
+-- TOC entry 3143 (class 0 OID 0)
+-- Dependencies: 201
 -- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: enallterm
 --
 
@@ -303,7 +576,7 @@ ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
 
 
 --
--- TOC entry 2868 (class 2604 OID 42007)
+-- TOC entry 2906 (class 2604 OID 42007)
 -- Name: areas id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -311,7 +584,55 @@ ALTER TABLE ONLY public.areas ALTER COLUMN id SET DEFAULT nextval('public.areas_
 
 
 --
--- TOC entry 2867 (class 2604 OID 41999)
+-- TOC entry 2917 (class 2604 OID 50571)
+-- Name: autor id; Type: DEFAULT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.autor ALTER COLUMN id SET DEFAULT nextval('public.autor_id_seq'::regclass);
+
+
+--
+-- TOC entry 2913 (class 2604 OID 50443)
+-- Name: equipo id; Type: DEFAULT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.equipo ALTER COLUMN id SET DEFAULT nextval('public.equipo_id_seq'::regclass);
+
+
+--
+-- TOC entry 2915 (class 2604 OID 50544)
+-- Name: ficha_terminologica id; Type: DEFAULT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.ficha_terminologica ALTER COLUMN id SET DEFAULT nextval('public.ficha_terminologica_id_seq'::regclass);
+
+
+--
+-- TOC entry 2912 (class 2604 OID 50430)
+-- Name: grupo id; Type: DEFAULT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.grupo ALTER COLUMN id SET DEFAULT nextval('public.grupo_id_seq'::regclass);
+
+
+--
+-- TOC entry 2914 (class 2604 OID 50476)
+-- Name: inscrito id; Type: DEFAULT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito ALTER COLUMN id SET DEFAULT nextval('public.inscrito_id_seq'::regclass);
+
+
+--
+-- TOC entry 2911 (class 2604 OID 50422)
+-- Name: materia id; Type: DEFAULT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.materia ALTER COLUMN id SET DEFAULT nextval('public.materia_id_seq'::regclass);
+
+
+--
+-- TOC entry 2905 (class 2604 OID 41999)
 -- Name: paises id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -319,7 +640,7 @@ ALTER TABLE ONLY public.paises ALTER COLUMN id SET DEFAULT nextval('public.paise
 
 
 --
--- TOC entry 2869 (class 2604 OID 42015)
+-- TOC entry 2910 (class 2604 OID 50409)
 -- Name: subareas id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -327,7 +648,7 @@ ALTER TABLE ONLY public.subareas ALTER COLUMN id SET DEFAULT nextval('public.sub
 
 
 --
--- TOC entry 2870 (class 2604 OID 50255)
+-- TOC entry 2907 (class 2604 OID 50255)
 -- Name: user id; Type: DEFAULT; Schema: public; Owner: enallterm
 --
 
@@ -335,7 +656,7 @@ ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_
 
 
 --
--- TOC entry 3026 (class 0 OID 42004)
+-- TOC entry 3099 (class 0 OID 42004)
 -- Dependencies: 199
 -- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
@@ -349,8 +670,8 @@ COPY public.areas (id, nombre) FROM stdin;
 
 
 --
--- TOC entry 3035 (class 0 OID 50387)
--- Dependencies: 208
+-- TOC entry 3106 (class 0 OID 50387)
+-- Dependencies: 206
 -- Data for Name: auth_assignment; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
@@ -362,8 +683,8 @@ admin	6	1571332652
 
 
 --
--- TOC entry 3033 (class 0 OID 50358)
--- Dependencies: 206
+-- TOC entry 3104 (class 0 OID 50358)
+-- Dependencies: 204
 -- Data for Name: auth_item; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
@@ -386,8 +707,8 @@ admin	1	\N	\N	\N	1571332652	1571332652
 
 
 --
--- TOC entry 3034 (class 0 OID 50372)
--- Dependencies: 207
+-- TOC entry 3105 (class 0 OID 50372)
+-- Dependencies: 205
 -- Data for Name: auth_item_child; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
@@ -409,8 +730,8 @@ admin	readSubareas
 
 
 --
--- TOC entry 3032 (class 0 OID 50350)
--- Dependencies: 205
+-- TOC entry 3103 (class 0 OID 50350)
+-- Dependencies: 203
 -- Data for Name: auth_rule; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
@@ -419,8 +740,98 @@ COPY public.auth_rule (name, data, created_at, updated_at) FROM stdin;
 
 
 --
--- TOC entry 3029 (class 0 OID 42023)
--- Dependencies: 202
+-- TOC entry 3120 (class 0 OID 50568)
+-- Dependencies: 220
+-- Data for Name: autor; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.autor (id, ficha_terminologica_id, user_id, nombre, apaterno, amaterno, inscrito_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3114 (class 0 OID 50440)
+-- Dependencies: 214
+-- Data for Name: equipo; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.equipo (id, nombre, grupo_id) FROM stdin;
+1	azul	1
+2	amrillo	1
+3	rojo	1
+4	tigre	6
+5	delfin	6
+6	ave	6
+\.
+
+
+--
+-- TOC entry 3118 (class 0 OID 50541)
+-- Dependencies: 218
+-- Data for Name: ficha_terminologica; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.ficha_terminologica (id, area_id, subarea_id, pais_id, temino_origen, termino_meta, definicion_origen, definicion_meta, fuente_origen, fuente_meta, contexto_origen, contexto_meta, no_recomendado, notas_fichat, url_imagen, url_video, url_sonido, create_at, update_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3112 (class 0 OID 50427)
+-- Dependencies: 212
+-- Data for Name: grupo; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.grupo (id, nombre, materia_id) FROM stdin;
+1	DTJ01	1
+2	DTJ02	1
+3	DTJ03	1
+4	TT01	6
+5	TT02	6
+6	TT03	6
+\.
+
+
+--
+-- TOC entry 3116 (class 0 OID 50473)
+-- Dependencies: 216
+-- Data for Name: inscrito; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.inscrito (id, user_id, materia_id, grupo_id, equipo_id) FROM stdin;
+1	13	6	1	1
+2	14	6	1	1
+3	15	6	1	2
+4	16	6	1	2
+5	17	6	1	3
+6	18	1	1	4
+7	19	1	1	4
+8	20	1	1	5
+9	22	1	1	5
+10	21	1	1	6
+\.
+
+
+--
+-- TOC entry 3110 (class 0 OID 50419)
+-- Dependencies: 210
+-- Data for Name: materia; Type: TABLE DATA; Schema: public; Owner: enallterm
+--
+
+COPY public.materia (id, nombre) FROM stdin;
+1	Diplomado en traducción juridica
+2	Iniciación a la Traducción
+3	Traducción de Textos Generales B-A (Inglés-Español)
+4	Traducción de Textos de Ciencias Sociales y Humanidades B-A (Inglés-Español)
+5	Traducción de Textos Generales C-A
+6	Terminología para Traductores
+7	Traducción de Textos Literarios B-A (Inglés-Español)
+8	Traducción de Textos de Ciencias Sociales y Humanidades C-A
+\.
+
+
+--
+-- TOC entry 3100 (class 0 OID 42023)
+-- Dependencies: 200
 -- Data for Name: migration; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
@@ -433,7 +844,7 @@ m180523_151638_rbac_updates_indexes_without_prefix	1571331962
 
 
 --
--- TOC entry 3024 (class 0 OID 41996)
+-- TOC entry 3097 (class 0 OID 41996)
 -- Dependencies: 197
 -- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
@@ -465,12 +876,12 @@ COPY public.paises (id, nombre, abreviatura) FROM stdin;
 
 
 --
--- TOC entry 3028 (class 0 OID 42012)
--- Dependencies: 201
+-- TOC entry 3108 (class 0 OID 50406)
+-- Dependencies: 208
 -- Data for Name: subareas; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
-COPY public.subareas (id, id_areas, nombre) FROM stdin;
+COPY public.subareas (id, areas_id, nombre) FROM stdin;
 1	1	Biología
 2	1	Química Diagnóstica
 3	1	Ciencia Forense
@@ -588,8 +999,8 @@ COPY public.subareas (id, id_areas, nombre) FROM stdin;
 
 
 --
--- TOC entry 3031 (class 0 OID 50252)
--- Dependencies: 204
+-- TOC entry 3102 (class 0 OID 50252)
+-- Dependencies: 202
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: enallterm
 --
 
@@ -600,6 +1011,7 @@ COPY public."user" (id, uid, username, email, password, contact_email, contact_p
 7	$2y$13$WLjseNbKYNuEemPSXh77b.rUn2nFg8jdYgS/SRMqN1h25PhMDqXqW	experto1	experto1@gmail.com	$2y$13$MF7TVW8UeKlzTk0giPEhb.jC/3xk5E.cFbh.sLrFW4yNqfBY6r0.i	\N	\N	1	2019-10-17 10:37:03.33043	2019-10-17 10:37:15.634164	TsNNwkbnk6X_t7VCQ82AQ87ydMTDGKkSYo5dIF_yxNRGEOdmRxeUk5xcDYwx
 8	$2y$13$UGRgtvBO0c2ctFREFPQkC.iD7CCc2X6/DHyDJzp6uu7SwBAYNQgH6	experto2	experto2@gmail.com	$2y$13$MEkrlxY2s3b2kODcHgMVe.96rqm99uHK0XduxfSPB4vjIC55tOzn2	\N	\N	1	2019-10-17 10:38:17.989294	2019-10-17 10:38:27.969711	bgdhHJca3OXFdDkW2w3gBHqkcfWmEtgKYI5DCayxl_YNoyoJQoYmmDRQN732
 9	$2y$13$kjTaUEVACPokpDmZM9j0qOiEHq6Zcl.E.RD6hKiSVlXxj10mTbrWG	experto3	experto3@gmail.com	$2y$13$glppZTpoVN7N.Tm.0S/Tze1IRJgPomwvkJr92HmQWPIz8pXFmk3CO	\N	\N	1	2019-10-17 10:39:57.364927	2019-10-17 10:40:06.426635	raZI5qxcpD4G3hEsBnqt9RVN7GnKo5PEdocZtd5zpF3AaOAIAIvOWQBM7E0v
+22	$2y$13$7ZpoEMTpFWO9a2mJX6ts8eg9J9eGClZaYh4bAs.QkfiZCGB030IOO	alumno10	alumno10@gmail.com	$2y$13$K4eOjCXQh0RcdKIlgc6cxO4JIjTOc0n6yI1br.DBlBUuGiqmGx34q	\N	\N	1	2019-10-23 12:11:15.276495	2019-10-23 12:11:15.276495	HLAgU9Jg4fGJh2iy-UDLNXBIqTqX6Jmh5M6xEiIWvw8hprxvPdLMkcj0dNKd
 18	$2y$13$F6kdP1h/yZ3rMUk/a.MqcOC./GqMbZw8MMhA5x9rM8oRCwnIuWU/q	alumno6	alumno6@gmail.com	$2y$13$Rk73QpDqWE5Yqfr2kjeAXe9U5P.uyA5nF8umMYR67ozBJBOWn2YA6	\N	\N	1	2019-10-17 10:54:22.141131	2019-10-17 10:55:24.509722	nUPE_fPTf2sbzDlO6UZGn2g6z1Eg7vzhWwiM5_8e8QIVUA_v66C3a9NkiRA_
 10	$2y$13$m.jEnvuXrc/btgaBzVba6O9bC8VwBbcs/YZluDobeU0fdQ33UZcdq	lingüísta1	lingüísta1@gmail.com	$2y$13$nEkztY4Xu1RF/wzE1DNWne1k7EC5leTozMIFXGwN0F6qviQSh.93G	\N	\N	1	2019-10-17 10:41:12.937028	2019-10-17 10:41:12.937028	ecDURZtiel3r1P5yv3IoyHP0sTWbTd4veFmuW8aHcemniQpKMJGcezKWKS75
 17	$2y$13$b/1OxnCOKiRSGAGW0yT41.KTGzgq1pLxqfWNXVaJ9PldWT3DCJune	alumno5	alumno5@gmail.com	$2y$13$CBs1DTPxutIWNXlyG3t9RuJJ4P.76H42PSHtqQYxWJpMUJAZ/tZ12	\N	\N	1	2019-10-17 10:53:24.177036	2019-10-17 10:55:49.699101	NWhrLShIap_rFDNyC0XZsUwmcyL70j50k2WvoPOVfIjecfd1b0wI8y-HvEz0
@@ -609,12 +1021,14 @@ COPY public."user" (id, uid, username, email, password, contact_email, contact_p
 13	$2y$13$2eRRThvMP02jCVh/ireOROvXdWHwSEDReMP1Aqea0UYR5GdnrGrUe	alumno1	alumno1@gmail.com	$2y$13$cAPEyYmIytuEkLyDJE8FFu.1ARrdM1ALQ1QS6TFYl2I1PklnNsiFW	\N	\N	1	2019-10-17 10:49:39.547314	2019-10-17 10:49:39.547314	LRKfLbj_Cu9UGP4K9EgvAd2OAEsMrLpBEOlC6h-oqq5NMb-QJ7shLz_b6bAA
 14	$2y$13$J9ucWPnkOlYO6v5eAVu4je0GbxMlLC4mi5Fz1zuBtwAiFSJL.Otse	alumno2	alumno2@gmail.com	$2y$13$f2eXrZyx/23ndJXuqg/ZNuVJctAhImBstHWzaSUc5akW2YQ0urueK	\N	\N	1	2019-10-17 10:50:38.889751	2019-10-17 10:50:38.889751	obJ48q2PX0GD_B8p5azjbuQ_qaGwu0JmHJDhCUcRrPPbMSirHLxCAKg_RFLu
 4	$2y$13$FQlDyhSwRYXGt.4jE12jLu8orxb5cccQvT00ZTdYZ.A.Ii2rN.2Yu	alexrdz	alexrdzallende@gmail.com	$2y$13$6nRaWfJfSr.a0n.NSy4ovOPWlfc8IYJwiZI5BClPjS61nykcjYzqK	\N	\N	1	2019-10-17 10:20:49.479493	2019-10-17 10:21:03.450739	D3qkWLo8hQ-oOwXvsJe5BfM-IIGWg5ua-npY4mPXytSvEORJoGU4WHlq82m5
+20	$2y$13$TSqYwPax0QKbqjTcQSY5iu3N2qJVprPmK2QGQGYK6NJ4EIsj0rAG.	alumno8	alumno8@gmail.com	$2y$13$/fdjFqn9SIaakYonBKnynOtXO1t2cmnkm5JTzK8rvNPuHrPZA9Tze	\N	\N	1	2019-10-23 12:03:40.759394	2019-10-23 12:04:26.143039	4k1sM_hNrGKx4YBHL8macDrFtDqpjFtRVDsNqssvy1MJHPV-lFc8fhJaxyod
 19	$2y$13$2yFUMt3x9S119RzgGXB7ueCzI6uBU24FSq4naXVo9yfBvR1K/2Wc.	alumno7	alumno7@gmail.com	$2y$13$zKv5JwuV7QVrGfuP5fHR8uSJZQG6iQV8VbWyiNS7xPXTKpIHDT1tG	\N	\N	1	2019-10-17 10:57:11.191783	2019-10-17 11:02:46.008294	fUjJlHWwa7SIu84YUPFNVF4-mXRrIg5HASniXdVUBLg-s6zVPp4-cSCEbBSg
+21	$2y$13$aDOmWf6zKhqe6vco9M2BHuJlO3xLqtQb0Zr/o6KCnuCPRfDjBPNfu	alumno9	alumno9@gmail.com	$2y$13$0xYyB.NQ8M9x6XepX4j1VOGQafxaPCdim9Xb0lPax4YJ76mfvkcUe	\N	\N	1	2019-10-23 12:06:36.756193	2019-10-23 12:06:36.756193	V5hHlZ_95WlJThEtWsO2kx3X0L9MScI_Nf4g8_wCAS2mZkyfJNGFbW1ItjxO
 \.
 
 
 --
--- TOC entry 3051 (class 0 OID 0)
+-- TOC entry 3144 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
@@ -623,7 +1037,61 @@ SELECT pg_catalog.setval('public.areas_id_seq', 4, true);
 
 
 --
--- TOC entry 3052 (class 0 OID 0)
+-- TOC entry 3145 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: autor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
+--
+
+SELECT pg_catalog.setval('public.autor_id_seq', 1, false);
+
+
+--
+-- TOC entry 3146 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
+--
+
+SELECT pg_catalog.setval('public.equipo_id_seq', 6, true);
+
+
+--
+-- TOC entry 3147 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: ficha_terminologica_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
+--
+
+SELECT pg_catalog.setval('public.ficha_terminologica_id_seq', 1, false);
+
+
+--
+-- TOC entry 3148 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: grupo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
+--
+
+SELECT pg_catalog.setval('public.grupo_id_seq', 6, true);
+
+
+--
+-- TOC entry 3149 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: inscrito_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
+--
+
+SELECT pg_catalog.setval('public.inscrito_id_seq', 10, true);
+
+
+--
+-- TOC entry 3150 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: materia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
+--
+
+SELECT pg_catalog.setval('public.materia_id_seq', 8, true);
+
+
+--
+-- TOC entry 3151 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: paises_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
@@ -632,8 +1100,8 @@ SELECT pg_catalog.setval('public.paises_id_seq', 22, true);
 
 
 --
--- TOC entry 3053 (class 0 OID 0)
--- Dependencies: 200
+-- TOC entry 3152 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: subareas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
 
@@ -641,16 +1109,16 @@ SELECT pg_catalog.setval('public.subareas_id_seq', 113, true);
 
 
 --
--- TOC entry 3054 (class 0 OID 0)
--- Dependencies: 203
+-- TOC entry 3153 (class 0 OID 0)
+-- Dependencies: 201
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: enallterm
 --
 
-SELECT pg_catalog.setval('public.user_id_seq', 19, true);
+SELECT pg_catalog.setval('public.user_id_seq', 22, true);
 
 
 --
--- TOC entry 2895 (class 2606 OID 50391)
+-- TOC entry 2938 (class 2606 OID 50391)
 -- Name: auth_assignment auth_assignment_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -659,7 +1127,7 @@ ALTER TABLE ONLY public.auth_assignment
 
 
 --
--- TOC entry 2893 (class 2606 OID 50376)
+-- TOC entry 2936 (class 2606 OID 50376)
 -- Name: auth_item_child auth_item_child_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -668,7 +1136,7 @@ ALTER TABLE ONLY public.auth_item_child
 
 
 --
--- TOC entry 2890 (class 2606 OID 50365)
+-- TOC entry 2933 (class 2606 OID 50365)
 -- Name: auth_item auth_item_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -677,7 +1145,7 @@ ALTER TABLE ONLY public.auth_item
 
 
 --
--- TOC entry 2888 (class 2606 OID 50357)
+-- TOC entry 2931 (class 2606 OID 50357)
 -- Name: auth_rule auth_rule_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -686,7 +1154,7 @@ ALTER TABLE ONLY public.auth_rule
 
 
 --
--- TOC entry 2880 (class 2606 OID 42027)
+-- TOC entry 2923 (class 2606 OID 42027)
 -- Name: migration migration_pkey; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -695,7 +1163,7 @@ ALTER TABLE ONLY public.migration
 
 
 --
--- TOC entry 2876 (class 2606 OID 42009)
+-- TOC entry 2921 (class 2606 OID 42009)
 -- Name: areas pk_areas_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -704,7 +1172,61 @@ ALTER TABLE ONLY public.areas
 
 
 --
--- TOC entry 2874 (class 2606 OID 42001)
+-- TOC entry 2955 (class 2606 OID 50576)
+-- Name: autor pk_autor_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT pk_autor_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2947 (class 2606 OID 50445)
+-- Name: equipo pk_equipo_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.equipo
+    ADD CONSTRAINT pk_equipo_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2953 (class 2606 OID 50550)
+-- Name: ficha_terminologica pk_ficha_terminologica_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.ficha_terminologica
+    ADD CONSTRAINT pk_ficha_terminologica_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2945 (class 2606 OID 50432)
+-- Name: grupo pk_grupo_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.grupo
+    ADD CONSTRAINT pk_grupo_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2949 (class 2606 OID 50478)
+-- Name: inscrito pk_inscrito_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito
+    ADD CONSTRAINT pk_inscrito_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2943 (class 2606 OID 50424)
+-- Name: materia pk_materia_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.materia
+    ADD CONSTRAINT pk_materia_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2919 (class 2606 OID 42001)
 -- Name: paises pk_paises_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -713,7 +1235,7 @@ ALTER TABLE ONLY public.paises
 
 
 --
--- TOC entry 2878 (class 2606 OID 42017)
+-- TOC entry 2941 (class 2606 OID 50411)
 -- Name: subareas pk_subareas_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -722,7 +1244,7 @@ ALTER TABLE ONLY public.subareas
 
 
 --
--- TOC entry 2882 (class 2606 OID 50262)
+-- TOC entry 2925 (class 2606 OID 50262)
 -- Name: user pk_user_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -731,7 +1253,25 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 2884 (class 2606 OID 50266)
+-- TOC entry 2957 (class 2606 OID 50578)
+-- Name: autor uk_autor_fichaterminologica_id_user_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT uk_autor_fichaterminologica_id_user_id UNIQUE (ficha_terminologica_id, user_id);
+
+
+--
+-- TOC entry 2951 (class 2606 OID 50480)
+-- Name: inscrito uk_inscrito_user_id_materia_id; Type: CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito
+    ADD CONSTRAINT uk_inscrito_user_id_materia_id UNIQUE (user_id, materia_id);
+
+
+--
+-- TOC entry 2927 (class 2606 OID 50266)
 -- Name: user uk_user_auth_key; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -740,7 +1280,7 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 2886 (class 2606 OID 50264)
+-- TOC entry 2929 (class 2606 OID 50264)
 -- Name: user uk_user_uid; Type: CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -749,7 +1289,7 @@ ALTER TABLE ONLY public."user"
 
 
 --
--- TOC entry 2896 (class 1259 OID 50398)
+-- TOC entry 2939 (class 1259 OID 50398)
 -- Name: idx-auth_assignment-user_id; Type: INDEX; Schema: public; Owner: enallterm
 --
 
@@ -757,7 +1297,7 @@ CREATE INDEX "idx-auth_assignment-user_id" ON public.auth_assignment USING btree
 
 
 --
--- TOC entry 2891 (class 1259 OID 50399)
+-- TOC entry 2934 (class 1259 OID 50399)
 -- Name: idx-auth_item-type; Type: INDEX; Schema: public; Owner: enallterm
 --
 
@@ -765,7 +1305,7 @@ CREATE INDEX "idx-auth_item-type" ON public.auth_item USING btree (type);
 
 
 --
--- TOC entry 2901 (class 2606 OID 50392)
+-- TOC entry 2961 (class 2606 OID 50392)
 -- Name: auth_assignment auth_assignment_item_name_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -774,7 +1314,7 @@ ALTER TABLE ONLY public.auth_assignment
 
 
 --
--- TOC entry 2900 (class 2606 OID 50382)
+-- TOC entry 2960 (class 2606 OID 50382)
 -- Name: auth_item_child auth_item_child_child_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -783,7 +1323,7 @@ ALTER TABLE ONLY public.auth_item_child
 
 
 --
--- TOC entry 2899 (class 2606 OID 50377)
+-- TOC entry 2959 (class 2606 OID 50377)
 -- Name: auth_item_child auth_item_child_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -792,7 +1332,7 @@ ALTER TABLE ONLY public.auth_item_child
 
 
 --
--- TOC entry 2898 (class 2606 OID 50366)
+-- TOC entry 2958 (class 2606 OID 50366)
 -- Name: auth_item auth_item_rule_name_fkey; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
 --
 
@@ -801,15 +1341,123 @@ ALTER TABLE ONLY public.auth_item
 
 
 --
--- TOC entry 2897 (class 2606 OID 42018)
--- Name: subareas fk_subareas_id_id_areas; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+-- TOC entry 2972 (class 2606 OID 50579)
+-- Name: autor fk_autor_id_ficha_termininologica; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT fk_autor_id_ficha_termininologica FOREIGN KEY (ficha_terminologica_id) REFERENCES public.ficha_terminologica(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2974 (class 2606 OID 50589)
+-- Name: autor fk_autor_inscrito_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT fk_autor_inscrito_id FOREIGN KEY (inscrito_id) REFERENCES public.inscrito(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2973 (class 2606 OID 50584)
+-- Name: autor fk_autor_user_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.autor
+    ADD CONSTRAINT fk_autor_user_id FOREIGN KEY (user_id) REFERENCES public."user"(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2964 (class 2606 OID 50446)
+-- Name: equipo fk_equipo_grupo_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.equipo
+    ADD CONSTRAINT fk_equipo_grupo_id FOREIGN KEY (grupo_id) REFERENCES public.grupo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2969 (class 2606 OID 50551)
+-- Name: ficha_terminologica fk_ficha_terminologica_area_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.ficha_terminologica
+    ADD CONSTRAINT fk_ficha_terminologica_area_id FOREIGN KEY (area_id) REFERENCES public.areas(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2971 (class 2606 OID 50561)
+-- Name: ficha_terminologica fk_ficha_terminologica_pais_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.ficha_terminologica
+    ADD CONSTRAINT fk_ficha_terminologica_pais_id FOREIGN KEY (pais_id) REFERENCES public.paises(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2970 (class 2606 OID 50556)
+-- Name: ficha_terminologica fk_ficha_terminologica_subarea_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.ficha_terminologica
+    ADD CONSTRAINT fk_ficha_terminologica_subarea_id FOREIGN KEY (area_id) REFERENCES public.subareas(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2963 (class 2606 OID 50433)
+-- Name: grupo fk_grupo_materia_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.grupo
+    ADD CONSTRAINT fk_grupo_materia_id FOREIGN KEY (materia_id) REFERENCES public.materia(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2968 (class 2606 OID 50496)
+-- Name: inscrito fk_inscrito_equipo_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito
+    ADD CONSTRAINT fk_inscrito_equipo_id FOREIGN KEY (equipo_id) REFERENCES public.equipo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2967 (class 2606 OID 50491)
+-- Name: inscrito fk_inscrito_grupo_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito
+    ADD CONSTRAINT fk_inscrito_grupo_id FOREIGN KEY (grupo_id) REFERENCES public.grupo(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2966 (class 2606 OID 50486)
+-- Name: inscrito fk_inscrito_materia_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito
+    ADD CONSTRAINT fk_inscrito_materia_id FOREIGN KEY (materia_id) REFERENCES public.materia(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2965 (class 2606 OID 50481)
+-- Name: inscrito fk_inscrito_user_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
+--
+
+ALTER TABLE ONLY public.inscrito
+    ADD CONSTRAINT fk_inscrito_user_id FOREIGN KEY (user_id) REFERENCES public."user"(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2962 (class 2606 OID 50412)
+-- Name: subareas fk_subareas_areas_id; Type: FK CONSTRAINT; Schema: public; Owner: enallterm
 --
 
 ALTER TABLE ONLY public.subareas
-    ADD CONSTRAINT fk_subareas_id_id_areas FOREIGN KEY (id_areas) REFERENCES public.areas(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+    ADD CONSTRAINT fk_subareas_areas_id FOREIGN KEY (areas_id) REFERENCES public.areas(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
--- Completed on 2019-10-18 12:23:45 CDT
+-- Completed on 2019-10-23 18:57:16 CDT
 
 --
 -- PostgreSQL database dump complete
