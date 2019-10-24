@@ -17,7 +17,7 @@ $this->registerCss('
 <div class="site-about">
 	<h1><?= Html::encode($this->title) ?></h1>
 
-	<p>Esta es la pagina de permisos</p>
+	<p>Usuarios del sistema con permisos</p>
 
 	<?php foreach ($users as $user) : ?>
 		<div class="col-md-3">
