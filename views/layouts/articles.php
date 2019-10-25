@@ -29,6 +29,7 @@ AppAsset::register($this);
 
 <div class="wrap">
 	    <?php
+	    /*
     NavBar::begin([
         'brandLabel' => '<img src="'.Yii::$app->homeUrl.'/../images/UNAM.png" border="1" alt="logo" width="100" height="100">',
         'brandUrl' => Yii::$app->homeUrl,
@@ -58,6 +59,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();
+    */
     ?>
     <div class="container">
 
@@ -74,7 +76,7 @@ AppAsset::register($this);
 		<div class="col-xs-4">
 			<h4>Table of contents</h4>
 			<?php
-
+			/*
 				echo MultilevelVerticalMenu::widget(
 				array(
 				"menu"=>array(
@@ -134,7 +136,7 @@ AppAsset::register($this);
 				    "transition" => 1 // To choose between 1,2,3,4 and 5. 
 				)
 				);
-
+			*/
 			?>
 			<ol>
 				<li><a href="#intro">Introduction</a></li>

@@ -156,11 +156,12 @@ class SiteController extends Controller
         $users = User::find()->orderBy('id desc')->all();
         $permissions = Yii::$app->authManager->getPermissions();
 
-        $guestUser = new User();
-        $guestUser->username = 'guest';
+        //$guestUser = new User();
+        //$guestUser->username = 'guest';
 
         return $this->render('checkPermissions',[
-            'users'=> ArrayHelper::merge([$guestUser], $users),
+            //'users'=> ArrayHelper::merge([$guestUser], $users),
+            'users'=> $users,
             'permissions'=>$permissions,
         ]);
     }

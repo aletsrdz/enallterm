@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Checar los permisos';
+$this->title = 'Checar los permisos de los usuarios del sistema';
 $this->params['breadcrums'][] = $this->title;
 $this->registerCss('
 	.allowed-permission{
@@ -16,8 +16,6 @@ $this->registerCss('
 
 <div class="site-about">
 	<h1><?= Html::encode($this->title) ?></h1>
-
-	<p>Usuarios del sistema con permisos</p>
 
 	<?php foreach ($users as $user) : ?>
 		<div class="col-md-3">

@@ -18,7 +18,8 @@
 	 public function execute($user, $item, $params)
 	 {
 	 	
-	 	return isset($params['post']) ? $params['post']->createdBy == $user : false;
+	 	//return isset($params['post']) ? $params['post']->createdBy == $user : false;
+	 	return isset($params['post']) ? $params['post']->getId == $user : false;
 	 	
  	 }
 }
