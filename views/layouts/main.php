@@ -3,12 +3,16 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\bootstrap\Alert;
+use yii\models\User;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 AppAsset::register($this);
 ?>
@@ -29,18 +33,30 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => '<img src="'.Yii::$app->homeUrl.'/../images/UNAM.png" border="1" alt="logo" width="100" height="100">',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar', //navbar navbar-fixed-top
         ],
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
+            ['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],            
+            [
+                'label' => 'Catalogos',
+                'visible'=> Yii::$app->user->can('super'),
+                'items' => [
+                     ['label' => 'Areas', 'url' => '#'],
+                     ['label' => 'Subareas', 'url' => '#'],
+                     ['label' => 'Paises', 'url' => '/site/check'],
+                     '<li class="divider"></li>',
+                     '<li class="dropdown-header">Administración</li>',
+                     ['label' => 'Lista de permisos', 'url' => './check'],
+                ],
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -52,7 +68,8 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+            ['label' => 'Registrarse', 'url'=>['/site/register']],
         ],
     ]);
     NavBar::end();
@@ -62,7 +79,12 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?= Alert::widget() ?>
+        <?php if(!empty(Yii::$app->session->getFlash('success'))){
+                echo Alert::widget([
+                    'options'=>['class'=>'alert-success alert-dismissible'],    
+                    'body'=> Yii::$app->session->getFlash('success')
+                    ]);
+                }?>
         <?= $content ?>
     </div>
 </div>
