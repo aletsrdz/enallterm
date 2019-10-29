@@ -38,6 +38,7 @@ class FichaTerminologica extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $imageFile;
     public static function tableName()
     {
         return '{{%ficha_terminologica}}';
@@ -53,8 +54,9 @@ class FichaTerminologica extends \yii\db\ActiveRecord
             [['area_id', 'subarea_id', 'pais_id'], 'integer'],
             [['temino_origen', 'termino_meta', 'definicion_origen', 'definicion_meta'], 'required'],
             [['temino_origen', 'termino_meta', 'definicion_origen', 'definicion_meta', 'fuente_origen', 'fuente_meta', 'contexto_origen', 'contexto_meta', 'no_recomendado', 'notas_fichat'], 'string'],
+            [['imageFile'],'file','skipOnEmpty'=>true, 'extensions'=>'png, jpg'],
             [['create_at', 'update_at'], 'safe'],
-            [['url_imagen', 'url_video', 'url_sonido'], 'string', 'max' => 255],
+            [['url_video', 'url_sonido'], 'string', 'max' => 255],
             [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Areas::className(), 'targetAttribute' => ['area_id' => 'id']],
             [['pais_id'], 'exist', 'skipOnError' => true, 'targetClass' => Paises::className(), 'targetAttribute' => ['pais_id' => 'id']],
             [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subareas::className(), 'targetAttribute' => ['area_id' => 'id']],
@@ -87,6 +89,16 @@ class FichaTerminologica extends \yii\db\ActiveRecord
             'create_at' => 'Create At',
             'update_at' => 'Update At',
         ];
+    }
+
+
+    public function upload(){
+        if($this->imageFile){
+            $path = Url::to('@webroot/images/upload/');
+            $filename = strtolower($this->name) . '.jpg, .png';
+            $this->imageFile->saveAs($path. $filename);
+        }
+        return true;
     }
 
     /**
@@ -127,5 +139,15 @@ class FichaTerminologica extends \yii\db\ActiveRecord
     public function getSubarea()
     {
         return $this->hasOne(Subareas::className(), ['id' => 'area_id']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->upload();
+            return true;
+        } else {
+            return false;
+        }
     }
 }

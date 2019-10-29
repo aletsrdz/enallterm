@@ -43,8 +43,9 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
-            ['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],            
+            ['label' => 'Búsqueda', 'url' => ['/site/busqueda']],
+            ['label' => 'Quienes somos', 'url' => ['/site/about']],
+            ['label' => 'Contacto', 'url' => ['/site/contact']],            
             [
                 'label' => 'Catalogos',
                 'visible'=> Yii::$app->user->can('super'),
@@ -57,6 +58,7 @@ AppAsset::register($this);
                      ['label' => 'Lista de permisos', 'url' => './check'],
                 ],
             ],
+            ['label' => 'Registrarse', 'url'=>['/site/register']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -68,8 +70,7 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            ),
-            ['label' => 'Registrarse', 'url'=>['/site/register']],
+            ),     
         ],
     ]);
     NavBar::end();

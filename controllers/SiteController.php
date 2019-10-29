@@ -138,7 +138,7 @@ class SiteController extends Controller
     public function actionContact()
     {
 
-        $this->layout = 'articles'; //cambiar de layout
+        //$this->layout = 'articles'; //cambiar de layout
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -172,5 +172,8 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    public function actionBusqueda(){
+        return $this->render('busqueda');
     }
 }
