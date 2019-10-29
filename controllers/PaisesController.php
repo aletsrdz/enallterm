@@ -8,6 +8,7 @@ use app\models\PaisesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * PaisesController implements the CRUD actions for Paises model.
@@ -25,7 +26,17 @@ class PaisesController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
-            ],
+            ],          
+            'access'=>[
+                'class'=>AccessControl::className(),
+                //'except'=>['create'],
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@'],                        
+                    ]
+                ]
+            ]
         ];
     }
 

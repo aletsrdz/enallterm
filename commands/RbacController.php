@@ -126,7 +126,7 @@ class RbacController extends Controller
 
 		 	// permiso de ver materia
 		 	$viewMateria = $auth->createPermission('viewMateria');
-		 	$viewUser->description = 'Ver materia';
+		 	$viewMateria->description = 'Ver materia';
 		 	$auth->add($viewMateria);
 		 	$auth->addChild($admin, $viewMateria);
 
@@ -150,7 +150,7 @@ class RbacController extends Controller
 
 		 	// permiso de ver Grupo
 		 	$viewGrupo = $auth->createPermission('viewGrupo');
-		 	$viewUser->description = 'Ver Grupo';
+		 	$viewGrupo->description = 'Ver Grupo';
 		 	$auth->add($viewGrupo);
 		 	$auth->addChild($admin, $viewGrupo);
 
@@ -174,9 +174,9 @@ class RbacController extends Controller
 
 		 	// permiso de ver Equipo
 		 	$viewEquipo = $auth->createPermission('viewEquipo');
-		 	$viewUser->description = 'Ver Equipo';
+		 	$viewEquipo->description = 'Ver Equipo';
 		 	$auth->add($viewEquipo);
-		 	$auth->addChild($admin, $viewEquipo);		 	
+		 	$auth->addChild($admin, $viewEquipo);
 
 		 	//inicia create Author role
 
@@ -257,7 +257,39 @@ class RbacController extends Controller
 
 		 	//se crea la jerarquía de permisos
 
-		 	$auth->addChild($admin, $author);	 
+		 	$auth->addChild($admin, $author);
+
+		 	//Defaul Role guest -- invitado		    		   
+			$guest = $auth->createRole('guest');
+			$auth->add($guest);
+
+		    $viewBusqueda = $auth->createPermission('viewBusqueda');
+		    $viewBusqueda->description = 'Leer Busqueda';
+		    $auth->add($viewBusqueda);
+		    $auth->addChild($guest, $viewBusqueda);
+
+		    $viewAbout = $auth->createPermission('viewAbout');
+		    $viewAbout->description = 'Leer About';
+		    $auth->add($viewAbout);
+		    $auth->addChild($guest, $viewAbout);
+
+		    $viewInicio = $auth->createPermission('viewInicio');
+		    $viewInicio->description = 'Leer Inicio';
+		    $auth->add($viewInicio);
+		    $auth->addChild($guest, $viewInicio);
+
+		    $viewContact = $auth->createPermission('viewContact');
+		    $viewContact->description = 'Leer Contacto';
+		    $auth->add($viewContact);
+		    $auth->addChild($guest, $viewContact);
+
+		    $viewRegister = $auth->createPermission('viewRegister');
+		    $viewRegister->description = 'Leer Registrar';
+		    $auth->add($viewRegister);
+		    $auth->addChild($guest, $viewRegister);
+
+			$auth->addChild($author, $guest); //author es hijo de guest
+
 
 			 // assign roles
 			 $auth->assign($superadmin, User::findByUsername('alexrdz')->id);// se cambio findByUsername por findByEmail
@@ -273,6 +305,8 @@ class RbacController extends Controller
 			 $auth->assign($author, User::findByUsername('alumno8')->id);
 			 $auth->assign($author, User::findByUsername('alumno9')->id);
 			 $auth->assign($author, User::findByUsername('alumno10')->id);
+			
+			
 			 echo "Done!\n";
 			/*
 

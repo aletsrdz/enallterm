@@ -8,6 +8,7 @@ use app\models\AutorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AutorController implements the CRUD actions for Autor model.
@@ -26,6 +27,16 @@ class AutorController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access'=>[
+                'class'=>AccessControl::className(),
+                //'except'=>['create'],
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@'],                        
+                    ]
+                ]
+            ]
         ];
     }
 

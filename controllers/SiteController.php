@@ -83,7 +83,10 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            //return $this->goBack();//Si tuvo las credenciales le da acceso al sistema
+
+            $this->redirect('../paises/index');
+            //$this->redirect(array('private/index'));
         }
 
         return $this->render('login', [
@@ -140,7 +143,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $this->layout = 'articles'; //cambiar de layout
+        //$this->layout = 'articles'; //cambiar de layout
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -156,12 +159,12 @@ class SiteController extends Controller
         $users = User::find()->orderBy('id desc')->all();
         $permissions = Yii::$app->authManager->getPermissions();
 
-        //$guestUser = new User();
-        //$guestUser->username = 'guest';
+        $guestUser = new User();
+        $guestUser->username = 'guest';
 
         return $this->render('checkPermissions',[
-            //'users'=> ArrayHelper::merge([$guestUser], $users),
-            'users'=> $users,
+            'users'=> ArrayHelper::merge([$guestUser], $users),
+            //'users'=> $users,
             'permissions'=>$permissions,
         ]);
     }
@@ -174,5 +177,10 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionBusqueda()
+    {
+        return $this->render('busqueda');
     }
 }

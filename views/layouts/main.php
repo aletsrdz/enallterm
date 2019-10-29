@@ -42,20 +42,24 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
-            ['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],            
+            ['label' => 'Búsqueda', 'url' => ['/site/busqueda']],
+            ['label' => 'Quienes somos', 'url' => ['/site/about']],
+            ['label' => 'Contacto', 'url' => ['/site/contact']],
+            //['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
+            //['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],            
             [
                 'label' => 'Catalogos',
                 'visible'=> Yii::$app->user->can('super'),
                 'items' => [
-                     ['label' => 'Areas', 'url' => '#'],
-                     ['label' => 'Subareas', 'url' => '#'],
-                     ['label' => 'Paises', 'url' => '/site/check'],
+                     ['label' => 'Areas', 'url' => 'areas'],
+                     ['label' => 'Subareas', 'url' => 'subareas'],
+                     ['label' => 'Paises', 'url' => 'paises'],
                      '<li class="divider"></li>',
                      '<li class="dropdown-header">Administración</li>',
-                     ['label' => 'Lista de permisos', 'url' => './check'],
+                     ['label' => 'Lista de permisos', 'url' => '../site/check'],
                 ],
             ],
+            ['label' => 'Registrarse', 'url'=>['/site/register']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -67,8 +71,7 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            ),
-            ['label' => 'Registrarse', 'url'=>['/site/register']],
+            ),            
         ],
     ]);
     NavBar::end();

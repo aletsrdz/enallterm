@@ -5,7 +5,7 @@
 -- Dumped from database version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 -- Dumped by pg_dump version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 
--- Started on 2019-10-25 14:28:32 CDT
+-- Started on 2019-10-28 17:20:37 CST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -676,19 +676,19 @@ COPY public.areas (id, nombre) FROM stdin;
 --
 
 COPY public.auth_assignment (item_name, user_id, created_at) FROM stdin;
-super	4	1572030855
-admin	5	1572030855
-admin	6	1572030855
-author	13	1572030855
-author	14	1572030855
-author	15	1572030855
-author	16	1572030855
-author	17	1572030855
-author	18	1572030855
-author	19	1572030855
-author	20	1572030855
-author	21	1572030855
-author	22	1572030855
+super	4	1572279332
+admin	5	1572279332
+admin	6	1572279332
+author	13	1572279332
+author	14	1572279332
+author	15	1572279332
+author	16	1572279332
+author	17	1572279332
+author	18	1572279332
+author	19	1572279332
+author	20	1572279332
+author	21	1572279332
+author	22	1572279332
 \.
 
 
@@ -699,43 +699,49 @@ author	22	1572030855
 --
 
 COPY public.auth_item (name, type, description, rule_name, data, created_at, updated_at) FROM stdin;
-createPais	2	Crear pais	\N	\N	1572030854	1572030854
-updatePais	2	Actualizar pais	\N	\N	1572030854	1572030854
-deletePais	2	Borrar pais	\N	\N	1572030854	1572030854
-readPais	2	Leer pais	\N	\N	1572030854	1572030854
-createAreas	2	Crear Areas	\N	\N	1572030854	1572030854
-updateAreas	2	Actualizar Areas	\N	\N	1572030854	1572030854
-deleteAreas	2	Borrar Areas	\N	\N	1572030854	1572030854
-readAreas	2	Leer Areas	\N	\N	1572030854	1572030854
-createSubareas	2	Crear Subareas	\N	\N	1572030854	1572030854
-updateSubareas	2	Actualizar Subareas	\N	\N	1572030854	1572030854
-deleteSubareas	2	Borrar Subareas	\N	\N	1572030854	1572030854
-readSubareas	2	Leer Subareas	\N	\N	1572030854	1572030854
-super	1	\N	\N	\N	1572030854	1572030854
-admin	1	\N	\N	\N	1572030854	1572030854
-createuser	2	Crear usuarios del sistema	\N	\N	1572030854	1572030854
-updateuser	2	Editar usuarios del sistema	\N	\N	1572030854	1572030854
-deleteuser	2	Eliminar usuarios del sistema	\N	\N	1572030854	1572030854
-viewuser	2	Ver usuarios del sistema	\N	\N	1572030854	1572030854
-createMateria	2	\N	\N	\N	1572030855	1572030855
-updateMateria	2	\N	\N	\N	1572030855	1572030855
-deleteMateria	2	\N	\N	\N	1572030855	1572030855
-viewMateria	2	\N	\N	\N	1572030855	1572030855
-createGrupo	2	\N	\N	\N	1572030855	1572030855
-updateGrupo	2	\N	\N	\N	1572030855	1572030855
-deleteGrupo	2	\N	\N	\N	1572030855	1572030855
-viewGrupo	2	\N	\N	\N	1572030855	1572030855
-createEquipo	2	\N	\N	\N	1572030855	1572030855
-updateEquipo	2	\N	\N	\N	1572030855	1572030855
-deleteEquipo	2	\N	\N	\N	1572030855	1572030855
-viewEquipo	2	\N	\N	\N	1572030855	1572030855
-author	1	\N	\N	\N	1572030855	1572030855
-createProfile	2	\N	\N	\N	1572030855	1572030855
-readProfile	2	\N	\N	\N	1572030855	1572030855
-createFichaTerminologica	2	\N	\N	\N	1572030855	1572030855
-updateFichaTerminologica	2	\N	\N	\N	1572030855	1572030855
-deleteFichaTerminologica	2	\N	\N	\N	1572030855	1572030855
-viewFichaTerminologica	2	\N	\N	\N	1572030855	1572030855
+createPais	2	Crear pais	\N	\N	1572279331	1572279331
+updatePais	2	Actualizar pais	\N	\N	1572279331	1572279331
+deletePais	2	Borrar pais	\N	\N	1572279331	1572279331
+readPais	2	Leer pais	\N	\N	1572279331	1572279331
+createAreas	2	Crear Areas	\N	\N	1572279331	1572279331
+updateAreas	2	Actualizar Areas	\N	\N	1572279331	1572279331
+deleteAreas	2	Borrar Areas	\N	\N	1572279331	1572279331
+readAreas	2	Leer Areas	\N	\N	1572279331	1572279331
+createSubareas	2	Crear Subareas	\N	\N	1572279331	1572279331
+updateSubareas	2	Actualizar Subareas	\N	\N	1572279331	1572279331
+deleteSubareas	2	Borrar Subareas	\N	\N	1572279331	1572279331
+readSubareas	2	Leer Subareas	\N	\N	1572279331	1572279331
+super	1	\N	\N	\N	1572279331	1572279331
+admin	1	\N	\N	\N	1572279331	1572279331
+createuser	2	Crear usuarios del sistema	\N	\N	1572279331	1572279331
+updateuser	2	Editar usuarios del sistema	\N	\N	1572279331	1572279331
+deleteuser	2	Eliminar usuarios del sistema	\N	\N	1572279331	1572279331
+viewuser	2	Ver usuarios del sistema	\N	\N	1572279331	1572279331
+createMateria	2	\N	\N	\N	1572279331	1572279331
+updateMateria	2	\N	\N	\N	1572279331	1572279331
+deleteMateria	2	\N	\N	\N	1572279331	1572279331
+viewMateria	2	Ver materia	\N	\N	1572279331	1572279331
+createGrupo	2	\N	\N	\N	1572279331	1572279331
+updateGrupo	2	\N	\N	\N	1572279331	1572279331
+deleteGrupo	2	\N	\N	\N	1572279331	1572279331
+viewGrupo	2	Ver Grupo	\N	\N	1572279331	1572279331
+createEquipo	2	\N	\N	\N	1572279331	1572279331
+updateEquipo	2	\N	\N	\N	1572279331	1572279331
+deleteEquipo	2	\N	\N	\N	1572279331	1572279331
+viewEquipo	2	Ver Equipo	\N	\N	1572279331	1572279331
+author	1	\N	\N	\N	1572279331	1572279331
+createProfile	2	\N	\N	\N	1572279332	1572279332
+readProfile	2	\N	\N	\N	1572279332	1572279332
+createFichaTerminologica	2	\N	\N	\N	1572279332	1572279332
+updateFichaTerminologica	2	\N	\N	\N	1572279332	1572279332
+deleteFichaTerminologica	2	\N	\N	\N	1572279332	1572279332
+viewFichaTerminologica	2	\N	\N	\N	1572279332	1572279332
+guest	1	\N	\N	\N	1572279332	1572279332
+viewBusqueda	2	Leer Busqueda	\N	\N	1572279332	1572279332
+viewAbout	2	Leer About	\N	\N	1572279332	1572279332
+viewInicio	2	Leer Inicio	\N	\N	1572279332	1572279332
+viewContact	2	Leer Contacto	\N	\N	1572279332	1572279332
+viewRegister	2	Leer Registrar	\N	\N	1572279332	1572279332
 \.
 
 
@@ -782,6 +788,12 @@ author	updateFichaTerminologica
 author	deleteFichaTerminologica
 author	viewFichaTerminologica
 admin	author
+guest	viewBusqueda
+guest	viewAbout
+guest	viewInicio
+guest	viewContact
+guest	viewRegister
+author	guest
 \.
 
 
@@ -1513,7 +1525,7 @@ ALTER TABLE ONLY public.subareas
     ADD CONSTRAINT fk_subareas_areas_id FOREIGN KEY (areas_id) REFERENCES public.areas(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 
--- Completed on 2019-10-25 14:28:37 CDT
+-- Completed on 2019-10-28 17:20:42 CST
 
 --
 -- PostgreSQL database dump complete
