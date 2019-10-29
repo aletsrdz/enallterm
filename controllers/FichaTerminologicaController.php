@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\helpers\Url;
 
 /**
  * FichaTerminologicaController implements the CRUD actions for FichaTerminologica model.
@@ -68,22 +69,8 @@ class FichaTerminologicaController extends Controller
         $model = new FichaTerminologica();
 
         if ($model->load(Yii::$app->request->post())){
-                   
-            $imagen = UploadedFile::getInstance($model, 'url_imagen');
-            $model->url_imagen = $imagen->baseName.'.'.$imagen->extension;        
-
-            echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
-            echo 'URL de imagen es:'.$model->url_imagen;
-            Yii::$app->end(); // termino la aplicación para poder ver los resultados en pantalla      
-            $imagen->saveAs('/images/upload/'.$imagen->baseName.'.'.$imagen->extension);
-            
-
-
-
-
-            if($model->save()) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');             
+            if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }

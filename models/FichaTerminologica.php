@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "{{%ficha_terminologica}}".
@@ -38,6 +39,8 @@ class FichaTerminologica extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $imageFile;
+
     public static function tableName()
     {
         return '{{%ficha_terminologica}}';
@@ -55,7 +58,7 @@ class FichaTerminologica extends \yii\db\ActiveRecord
             [['temino_origen', 'termino_meta', 'definicion_origen', 'definicion_meta', 'fuente_origen', 'fuente_meta', 'contexto_origen', 'contexto_meta', 'no_recomendado', 'notas_fichat'], 'string'],
             [['create_at', 'update_at'], 'safe'],
             //[['image'], 'file', 'skipOnEmpty'=>false, 'extensions'=>'jpg,png,gif'],
-            [['url_imagen'], 'file', 'extensions'=>'jpg,png,gif'],
+            [['imageFile'], 'file', 'skipOnEmpty'=>true, 'extensions'=>'jpg,png,gif'],
             [[ 'url_video', 'url_sonido'], 'string', 'max' => 255],
             [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Areas::className(), 'targetAttribute' => ['area_id' => 'id']],
             [['pais_id'], 'exist', 'skipOnError' => true, 'targetClass' => Paises::className(), 'targetAttribute' => ['pais_id' => 'id']],
@@ -130,4 +133,34 @@ class FichaTerminologica extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Subareas::className(), ['id' => 'area_id']);
     }
-}
+
+    public function upload(){
+            if ($this->imageFile) {
+            $path = Url::to('@webroot/images/upload/');
+            $nombre = $this->imageFile->baseName;
+            $extencion = $this->imageFile->extension;
+            $filename = $nombre.$extencion; //$this->imageFile;//strtolower($this->name) . '.jpg, .png, .gif';
+            $this->imageFile->saveAs($path . $filename);
+            return true;
+        }
+    }
+
+
+    public function beforeSave($insert){
+        if (parent::beforeSave($insert)) {
+            if ($this->imageFile) {
+                $path = Url::to('@webroot/images/upload/');
+                $nombre = $this->imageFile->baseName;
+                $extencion = $this->imageFile->extension;
+                $filename = $nombre.'.'.$extencion; //$this->imageFile;//strtolower($this->name) . '.jpg, .png, .gif';
+                $this->imageFile->saveAs($path . $filename);
+                $this->url_imagen = $filename;
+            } 
+            //$this->upload();   
+            return true;        
+        } else {
+            return false;
+        }
+    }    
+
+}    

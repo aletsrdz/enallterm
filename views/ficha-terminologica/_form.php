@@ -4,6 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\tinymce\TinyMce;
 use kartik\file\FileInput;
+use app\models\Paises;
+use app\models\Areas;
+use app\models\Subareas;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\FichaTerminologica */
@@ -12,11 +16,38 @@ use kartik\file\FileInput;
 
 <div class="ficha-terminologica-form">
 
-    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multiplart/form-data']]); ?>
-    
-    <?= $form->field($model, 'subarea_id')->textInput() ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype' => 'multipart/form-data']]); ?>
+        
+    <?= $form->field($model, 'area_id')->dropDownList(
+            ArrayHelper::map(Areas::find()->all(), 'id', 'nombre'),
+            [
+                'prompt'=>'Seleccciona un área',
+           
 
-    <?= $form->field($model, 'pais_id')->textInput() ?>
+               
+            ]);
+     ?>    
+
+    
+    <?= $form->field($model, 'subarea_id')->dropDownList(
+            ArrayHelper::map(Subareas::find()->all(), 'id', 'nombre'),
+            [
+                'prompt'=>'Seleccciona una subárea',
+           
+
+               
+            ]);
+     ?> 
+
+    <?= $form->field($model, 'pais_id')->dropDownList(
+            ArrayHelper::map(Paises::find()->all(), 'id', 'abreviatura'),
+            [
+                'prompt'=>'Seleccciona un pais',
+           
+
+               
+            ]);
+     ?>
 
     <?= $form->field($model, 'temino_origen')->textarea(['rows' => 2]) ?>
 
@@ -96,7 +127,7 @@ use kartik\file\FileInput;
 
     
     
-    <?= $form->field($model, 'url_imagen')->widget(FileInput::classname(), [
+    <?= $form->field($model, 'imageFile')->widget(FileInput::classname(), [
     'options' => ['accept' => 'image/*'],
     ]);?>
 
