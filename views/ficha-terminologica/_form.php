@@ -22,7 +22,10 @@ use yii\helpers\ArrayHelper;
             ArrayHelper::map(Areas::find()->all(), 'id', 'nombre'),
             [
                 'prompt'=>'Seleccciona un área',
-           
+                    'onchange'=>'
+                    $.post( "../subareas/lists?id='.'"+$(this).val(), function(data){
+                            $("select#fichaterminologica-subarea_id").html(data);
+                        });'
 
                
             ]);
@@ -32,7 +35,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'subarea_id')->dropDownList(
             ArrayHelper::map(Subareas::find()->all(), 'id', 'nombre'),
             [
-                'prompt'=>'Seleccciona una subárea',
+                'prompt'=>'Seleccciona una subarea',
            
 
                
