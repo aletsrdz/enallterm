@@ -4,6 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\tinymce\TinyMce;
 use kartik\select2\Select2;
+use app\models\Paises;
+use app\models\Areas;
+use app\models\Subareas;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\models\FichaTerminologica */
 /* @var $form yii\widgets\ActiveForm */
@@ -13,11 +17,37 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'area_id')->textInput() ?>
+    
+    <?= 
+        $form->field($model, 'area_id')->dropDownList(
+            ArrayHelper::map(Areas::find()->all(), 'id', 'nombre'),
+            [
+                'prompt'=>'Seleccciona una Área',
+                'onchange'=>'
+                    $.post( "../subareas/lists?id='.'"+$(this).val(), function(data){
+                            $("select#fichaterminologica-subarea_id").html(data);
+                        });'
+        
+            ]);
+    ?> 
 
-    <?= $form->field($model, 'subarea_id')->textInput() ?>
+    <?= 
+        $form->field($model, 'subarea_id')->dropDownList(
+            ArrayHelper::map(Subareas::find()->all(), 'id', 'nombre'),
+            [
+                'prompt'=>'Seleccciona una subarea',
+        
+            ]);
+    ?>     
 
-    <?= $form->field($model, 'pais_id')->textInput() ?>  
+   
+    <?= 
+        $form->field($model, 'pais_id')->dropDownList(
+            ArrayHelper::map(Paises::find()->all(), 'id', 'abreviatura'),
+            [
+                'prompt'=>'Seleccciona un pais',
+            ]);
+    ?>  
 
     <?= $form->field($model, 'temino_origen')->widget(TinyMce::className(), [
         'options' => ['rows' => 6],

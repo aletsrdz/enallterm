@@ -124,4 +124,20 @@ class SubareasController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionLists($id){
+
+        $countSubareas = Subareas::find()->where(['areas_id' =>$id])->count();
+
+        $subareas = Subareas::find()->where(['areas_id'=>$id])->all();
+
+        if($countSubareas > 0){
+            foreach ($subareas as $subarea) {
+                echo "<option value='".$subarea->id."'>".$subarea->nombre."</option>";
+            }
+        }
+        else{
+           echo "<option> - </option>";
+        }
+    }
 }
