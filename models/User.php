@@ -1,8 +1,6 @@
 <?php
 
 namespace app\models;
-
-
 use Yii;
 use yii\db\Expression;
 
@@ -26,8 +24,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     const STATUS_INSERTED = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_BLOQUED = 2;
-
-
     /**
      * {@inheritdoc}
      */
@@ -102,7 +98,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     /**
      * {@inheritdoc}
      */
-
     public function attributeLabels()
     {
         return [

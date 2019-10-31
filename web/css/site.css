@@ -2,6 +2,7 @@ html,
 body {
     height: 100%;
 }
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -113,6 +114,7 @@ a.desc:after {
     outline: none;
 }
 
+
 .col-xs-4 {
     border-color: red;
     border: solid;
@@ -122,3 +124,4 @@ a.desc:after {
     border-color: green;
     border: solid;   
 }
+

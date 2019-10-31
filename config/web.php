@@ -14,7 +14,8 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '3njPl5Sb16i-uWes0yNcQIcOVMI_q2zs',
+
+            'cookieValidationKey' => '3njPl5Sb16i-uWes0yNcQIcOVMI_q2zs',//rQ_yH1wtlgOs6R5hLYX_zwSGHEoI6lRG -- clave que se genero desde la Mac
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -28,6 +29,7 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
+
             'viewPath'=>'@app/mail',
             'useFileTransport' => false,
             'transport'=>[
@@ -55,6 +57,7 @@ $config = [
             ],
         ],
         'db' => $db,
+
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
         ],
@@ -65,7 +68,6 @@ $config = [
                 'register'=>'site/register'
             ],
         ],
-
     ],
     'params' => $params,
 ];

@@ -56,6 +56,7 @@ class FichaTerminologica extends \yii\db\ActiveRecord
             [['area_id', 'subarea_id', 'pais_id'], 'integer'],
             [['temino_origen', 'termino_meta', 'definicion_origen', 'definicion_meta'], 'required'],
             [['temino_origen', 'termino_meta', 'definicion_origen', 'definicion_meta', 'fuente_origen', 'fuente_meta', 'contexto_origen', 'contexto_meta', 'no_recomendado', 'notas_fichat'], 'string'],
+            [['imageFile'],'file','skipOnEmpty'=>true, 'extensions'=>'png, jpg'],
             [['create_at', 'update_at'], 'safe'],
             //[['image'], 'file', 'skipOnEmpty'=>false, 'extensions'=>'jpg,png,gif'],
             [['imageFile'], 'file', 'skipOnEmpty'=>true, 'extensions'=>'jpg,jpeg,png,gif'],
@@ -92,6 +93,16 @@ class FichaTerminologica extends \yii\db\ActiveRecord
             'create_at' => 'Create At',
             'update_at' => 'Update At',
         ];
+    }
+
+
+    public function upload(){
+        if($this->imageFile){
+            $path = Url::to('@webroot/images/upload/');
+            $filename = strtolower($this->name) . '.jpg, .png';
+            $this->imageFile->saveAs($path. $filename);
+        }
+        return true;
     }
 
     /**
@@ -134,16 +145,7 @@ class FichaTerminologica extends \yii\db\ActiveRecord
         return $this->hasOne(Subareas::className(), ['id' => 'area_id']);
     }
 
-    public function upload(){
-            if ($this->imageFile) {
-            $path = Url::to('@webroot/images/upload/');
-            $nombre = $this->imageFile->baseName;
-            $extencion = $this->imageFile->extension;
-            $filename = $nombre.$extencion; //$this->imageFile;//strtolower($this->name) . '.jpg, .png, .gif';
-            $this->imageFile->saveAs($path . $filename);
-            return true;
-        }
-    }
+
 
 
     public function beforeSave($insert){
@@ -164,3 +166,4 @@ class FichaTerminologica extends \yii\db\ActiveRecord
     }    
 
 }    
+

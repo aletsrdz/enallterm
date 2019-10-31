@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -44,9 +45,7 @@ AppAsset::register($this);
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Búsqueda', 'url' => ['/site/busqueda']],
             ['label' => 'Quienes somos', 'url' => ['/site/about']],
-            ['label' => 'Contacto', 'url' => ['/site/contact']],
-            //['label' => 'About', 'url' => ['/site/about'], 'visible'=>Yii::$app->user->can('super')],
-            //['label' => 'Contact', 'url' => ['/site/contact'], 'visible'=>Yii::$app->user->can('super')],            
+            ['label' => 'Contacto', 'url' => ['/site/contact']],            
             [
                 'label' => 'Catalogos',
                 'visible'=> Yii::$app->user->can('super'),
@@ -71,7 +70,7 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            ),            
+            ),     
         ],
     ]);
     NavBar::end();
@@ -81,14 +80,12 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-
         <?php if(!empty(Yii::$app->session->getFlash('success'))){
                 echo Alert::widget([
                     'options'=>['class'=>'alert-success alert-dismissible'],    
                     'body'=> Yii::$app->session->getFlash('success')
                     ]);
                 }?>
-            
         <?= $content ?>
     </div>
 </div>

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\tinymce\TinyMce;
 use kartik\file\FileInput;
+use kartik\select2\Select2;
 use app\models\Paises;
 use app\models\Areas;
 use app\models\Subareas;
@@ -15,6 +16,7 @@ use yii\helpers\ArrayHelper;
 ?>
 
 <div class="ficha-terminologica-form">
+
 
     <?php $form = ActiveForm::begin(['options'=>['enctype' => 'multipart/form-data']]); ?>
         

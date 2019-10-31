@@ -140,5 +140,4 @@ class SubareasController extends Controller
            echo "<option> - </option>";
         }
     }
-
 }

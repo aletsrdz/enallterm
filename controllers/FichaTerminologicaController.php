@@ -9,7 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-use yii\helpers\Url;
+
 
 /**
  * FichaTerminologicaController implements the CRUD actions for FichaTerminologica model.
@@ -74,7 +74,6 @@ class FichaTerminologicaController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
-
         return $this->render('create', [
             'model' => $model,
         ]);

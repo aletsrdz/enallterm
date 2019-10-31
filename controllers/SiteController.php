@@ -88,12 +88,10 @@ class SiteController extends Controller
             $this->redirect('../ficha-terminologica/create');
             //$this->redirect(array('private/index'));
         }
-
         return $this->render('login', [
             'model' => $model,
         ]);
     }
-
 
     public function actionRegister(){
         if(!Yii::$app->user->isGuest){
@@ -123,7 +121,6 @@ class SiteController extends Controller
         //return $this->goHome();
         return $this->redirect('login');
     }    
-
 
     /**
      * Logout action.
@@ -180,8 +177,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionBusqueda()
-    {
+    public function actionBusqueda(){
         return $this->render('busqueda');
     }
 }

@@ -26,6 +26,7 @@ $this->title = 'Login';
 
         <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
+
         <?= $form->field($model, 'password')->passwordInput() ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
@@ -43,6 +44,5 @@ $this->title = 'Login';
     <div class="col-lg-offset-1" style="color:#999;">
 
         <?= Html::a('Sino tienes cuenta, registrate', ['site/register'], ['class' => 'profile-link'])  ?>
-
     </div>
 </div>
