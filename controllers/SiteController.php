@@ -85,7 +85,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             //return $this->goBack();//Si tuvo las credenciales le da acceso al sistema
 
-            $this->redirect('../paises/index');
+            $this->redirect('../ficha-terminologica/create');
             //$this->redirect(array('private/index'));
         }
 
@@ -102,7 +102,7 @@ class SiteController extends Controller
         $newUser = new User();
         if ($newUser->load(Yii::$app->request->post()) && $newUser->save() && AcmeMailer::send(AcmeMailer::TYPE_REGISTRATION, $newUser)) {
             Yii::$app->session->setFlash('success', Yii::t('app', 'Registro Exitoso, por favor revisa tu correo'));
-            return $this->goHome();
+            return $this->goHome();//va a a la pagina de inicio
         }
         return $this->render('register', [
             'newUser'=> $newUser
@@ -118,9 +118,10 @@ class SiteController extends Controller
         if(!$userToActivate->activate()){
             Yii::$app->session->setFlash('error', Yii::t('app', 'Can not activate'));            
         }else{
-            Yii::$app->session->setFlash('success', Yii::t('app', 'Su registro se hizo correctamente - Successfully activated'));
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Su registro se hizo correctamente'));
         }
-        return $this->goHome();
+        //return $this->goHome();
+        return $this->redirect('login');
     }    
 
 

@@ -58,7 +58,7 @@ class FichaTerminologica extends \yii\db\ActiveRecord
             [['temino_origen', 'termino_meta', 'definicion_origen', 'definicion_meta', 'fuente_origen', 'fuente_meta', 'contexto_origen', 'contexto_meta', 'no_recomendado', 'notas_fichat'], 'string'],
             [['create_at', 'update_at'], 'safe'],
             //[['image'], 'file', 'skipOnEmpty'=>false, 'extensions'=>'jpg,png,gif'],
-            [['imageFile'], 'file', 'skipOnEmpty'=>true, 'extensions'=>'jpg,png,gif'],
+            [['imageFile'], 'file', 'skipOnEmpty'=>true, 'extensions'=>'jpg,jpeg,png,gif'],
             [[ 'url_video', 'url_sonido'], 'string', 'max' => 255],
             [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Areas::className(), 'targetAttribute' => ['area_id' => 'id']],
             [['pais_id'], 'exist', 'skipOnError' => true, 'targetClass' => Paises::className(), 'targetAttribute' => ['pais_id' => 'id']],
