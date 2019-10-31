@@ -19,40 +19,47 @@ use yii\helpers\ArrayHelper;
 
 
     <?php $form = ActiveForm::begin(['options'=>['enctype' => 'multipart/form-data']]); ?>
+
         
-    <?= $form->field($model, 'area_id')->dropDownList(
-            ArrayHelper::map(Areas::find()->all(), 'id', 'nombre'),
-            [
-                'prompt'=>'Seleccciona un área',
-                    'onchange'=>'
+  
+
+    <?=
+        $form->field($model, 'area_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Areas::find()->all(), 'id', 'nombre'),
+        'options' => [
+            'placeholder' => 'Seleccione una subarea',
+            'onchange'=>'
                     $.post( "../subareas/lists?id='.'"+$(this).val(), function(data){
                             $("select#fichaterminologica-subarea_id").html(data);
                         });'
 
-               
-            ]);
-     ?>    
+        ],
+        'pluginOptions' => [
+            'allowClear' => true
+            ],
+        ]); 
+    ?>    
 
-    
-    <?= $form->field($model, 'subarea_id')->dropDownList(
-            ArrayHelper::map(Subareas::find()->all(), 'id', 'nombre'),
-            [
-                'prompt'=>'Seleccciona una subarea',
-           
 
-               
-            ]);
-     ?> 
+    <?=
+        $form->field($model, 'subarea_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Subareas::find()->all(), 'id', 'nombre'),
+        'options' => ['placeholder' => 'Seleccione una subarea'],
+        'pluginOptions' => [
+            'allowClear' => true
+            ],
+        ]); 
+    ?>
 
-    <?= $form->field($model, 'pais_id')->dropDownList(
-            ArrayHelper::map(Paises::find()->all(), 'id', 'abreviatura'),
-            [
-                'prompt'=>'Seleccciona un pais',
-           
-
-               
-            ]);
-     ?>
+    <?=
+        $form->field($model, 'pais_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Paises::find()->all(), 'id', 'nombre'),
+        'options' => ['placeholder' => 'Seleccione un país'],
+        'pluginOptions' => [
+            'allowClear' => true
+            ],
+        ]); 
+    ?>     
 
     <?= $form->field($model, 'temino_origen')->textarea(['rows' => 2]) ?>
 
